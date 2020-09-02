@@ -22,11 +22,10 @@ class Users extends Migration
             $table->string('password',255);
             $table->string('fonction',100)->nullable();
             $table->integer('role_id')->unsigned();
-            $table->integer('user_created')->after('role_id')->unsigned()->nullable();
-            $table->integer('user_modified')->after('role_id')->unsigned()->nullable();
+            $table->integer('user_created')->unsigned();
+            $table->integer('user_modified')->unsigned();
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

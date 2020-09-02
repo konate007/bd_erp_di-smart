@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableUsers extends Migration
+class CreateUsersTableInAdminlteDb extends Migration
 {
     /**
      * Run the migrations.
@@ -19,14 +19,11 @@ class CreateTableUsers extends Migration
             $table->string('nom',50)->nullable();
             $table->string('email',100)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password',255)->nullable();
+            $table->string('password',255);
             $table->string('fonction',100)->nullable();
             $table->integer('role_id')->unsigned();
-            $table->integer('user_created')->unsigned()->nullable();
-            $table->integer('user_modified')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

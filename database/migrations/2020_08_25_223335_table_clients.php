@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableUsers extends Migration
+class TableClients extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateTableUsers extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('prenom',50)->nullable();
-            $table->string('nom',50)->nullable();
+        Schema::create('clients', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nom_client',100)->nullable();
+            $table->string('adresse',255)->nullable();
+            $table->integer('telephone1')->unsigned()->nullable();
+            $table->integer('telephone2')->unsigned()->nullable();
             $table->string('email',100)->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password',255)->nullable();
-            $table->string('fonction',100)->nullable();
-            $table->integer('role_id')->unsigned();
+            $table->string('site_web',100)->nullable();
+            $table->text('notes')->nullable();
             $table->integer('user_created')->unsigned()->nullable();
             $table->integer('user_modified')->unsigned()->nullable();
-            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -37,6 +36,6 @@ class CreateTableUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('clients');
     }
 }
