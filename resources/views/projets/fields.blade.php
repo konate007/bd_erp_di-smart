@@ -13,20 +13,40 @@
 <!-- Client Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('client_id', 'Client Id:') !!}
-    {!! Form::select('client_id', $values, ['class' => 'form-control']) !!}
+    {!! Form::select('client_id', $clientItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Date Lancement Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_lancement', 'Date Lancement:') !!}
-    {!! Form::date('date_lancement', null, ['class' => 'form-control']) !!}
+    {!! Form::text('date_lancement', null, ['class' => 'form-control','id'=>'date_lancement']) !!}
 </div>
+
+@push('scripts')
+    <script type="text/javascript">
+        $('#date_lancement').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            useCurrent: true,
+            sideBySide: true
+        })
+    </script>
+@endpush
 
 <!-- Date Livraison Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_livraison', 'Date Livraison:') !!}
-    {!! Form::date('date_livraison', null, ['class' => 'form-control']) !!}
+    {!! Form::text('date_livraison', null, ['class' => 'form-control','id'=>'date_livraison']) !!}
 </div>
+
+@push('scripts')
+    <script type="text/javascript">
+        $('#date_livraison').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            useCurrent: true,
+            sideBySide: true
+        })
+    </script>
+@endpush
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

@@ -44,9 +44,7 @@ class Projet_UserController extends AppBaseController
      */
     public function create()
     {
-        $valuesProjetID= Projet::pluck('id');
-        $valuesUserID= User::pluck('id');
-        return view('projet_users.create',compact('valuesUserID','valuesProjetID'));
+        return view('projet_users.create');
     }
 
     /**
@@ -97,15 +95,14 @@ class Projet_UserController extends AppBaseController
     public function edit($id)
     {
         $projetUser = $this->projetUserRepository->find($id);
-        $valuesProjetID= Projet::pluck('id');
-        $valuesUserID= User::pluck('id');
+    
         if (empty($projetUser)) {
             Flash::error('Projet  User not found');
 
             return redirect(route('projetUsers.index'));
         }
 
-        return view('projet_users.edit',compact('valuesUserID','valuesProjetID'))->with('projetUser', $projetUser);
+        return view('projet_users.edit')->with('projetUser', $projetUser);
     }
 
     /**

@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Support\Facades\Auth;
+
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Projet
  * @package App\Models
- * @version August 22, 2020, 9:54 pm UTC
+ * @version September 4, 2020, 7:59 pm UTC
  *
  * @property string $nom_projet
  * @property string $description
  * @property integer $client_id
  * @property string $date_lancement
- * @property string $date_livraison
+ * @property  $date_livraison
  */
 class Projet extends Model
 {
@@ -45,8 +45,7 @@ class Projet extends Model
         'nom_projet' => 'string',
         'description' => 'string',
         'client_id' => 'integer',
-        'date_lancement' => 'date',
-        'date_livraison' => 'date'
+        'date_lancement' => 'date'
     ];
 
     /**
@@ -60,21 +59,5 @@ class Projet extends Model
         'date_lancement' => 'required'
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating( function ($model)
-        {
-            $model->user_created = Auth::user()->id ?? null;
-            $model->user_modified = Auth::user()->id ?? null;
-            print($model);
-        });
-
-        static::updating( function ($model)
-        {
-            $model->user_modified = Auth::user()->id ?? null;
-        });
-    }    
     
 }

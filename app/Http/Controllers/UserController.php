@@ -7,7 +7,6 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use App\Models\Role;
 use Flash;
 use Response;
 
@@ -45,8 +44,7 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        $values= Role::pluck('id');
-        return view('users.create', compact('values'));
+        return view('users.create');
     }
 
     /**
@@ -97,15 +95,14 @@ class UserController extends AppBaseController
     public function edit($id)
     {
         $user = $this->userRepository->find($id);
-        $values= Role::pluck('id');
-
+       
         if (empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('users.index'));
         }
 
-        return view('users.edit',compact('values'))->with('user', $user);
+        return view('users.edit')->with('user', $user);
     }
 
     /**

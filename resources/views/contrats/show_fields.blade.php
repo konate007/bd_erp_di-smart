@@ -1,0 +1,48 @@
+<!-- Projet User Id Field -->
+<div class="form-group">
+    {!! Form::label('projet_user_id', 'Projet User Id:') !!}
+    <p>{{ $contrat->projet_user_id }}</p>
+</div>
+
+<!-- Planmaintenance Id Field -->
+<div class="form-group">
+    {!! Form::label('planmaintenance_id', 'Planmaintenance Id:') !!}
+    <p>{{ $contrat->planmaintenance_id }}</p>
+</div>
+
+<!-- Description Field -->
+<div class="form-group">
+    {!! Form::label('description', 'Description:') !!}
+    <p>{{ $contrat->description }}</p>
+</div>
+
+<!-- Date Debut Field -->
+<div class="form-group">
+    {!! Form::label('date_debut', 'Date Debut:') !!}
+    <p>{{ $contrat->date_debut }}</p>
+</div>
+
+<!-- Date Fin Field -->
+<div class="form-group">
+    {!! Form::label('date_fin', 'Date Fin:') !!}
+    <p>{{ $contrat->date_fin }}</p>
+</div>
+
+<!-- Statut Field -->
+<div class="form-group">
+    {!! Form::label('statut', 'Statut:') !!}
+    <p>{{ $contrat->statut }}</p>
+</div>
+
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{{ $contrat->created_at }}</p>
+</div>
+
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{{ $contrat->updated_at }}</p>
+</div>
+

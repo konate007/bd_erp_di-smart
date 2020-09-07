@@ -7,8 +7,6 @@ use App\Http\Requests\UpdateProjetRequest;
 use App\Repositories\ProjetRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use App\Models\Client;
-
 use Flash;
 use Response;
 
@@ -44,8 +42,7 @@ class ProjetController extends AppBaseController
      */
     public function create()
     {
-        $values= Client::pluck('id');
-        return view('projets.create', compact('values'));
+        return view('projets.create');
     }
 
     /**
@@ -96,7 +93,6 @@ class ProjetController extends AppBaseController
     public function edit($id)
     {
         $projet = $this->projetRepository->find($id);
-        $values= Client::pluck('id');
 
         if (empty($projet)) {
             Flash::error('Projet not found');
@@ -104,7 +100,7 @@ class ProjetController extends AppBaseController
             return redirect(route('projets.index'));
         }
 
-        return view('projets.edit',compact('values'))->with('projet', $projet);
+        return view('projets.edit')->with('projet', $projet);
     }
 
     /**

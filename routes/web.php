@@ -36,3 +36,17 @@ Route::resource('projets', 'ProjetController');
 Route::resource('projetUsers', 'Projet_UserController');
 
 Route::resource('projetUsers', 'Projet_UserController');
+
+Route::resource('services', 'ServiceController');
+
+Route::resource('planmaintenances', 'PlanmaintenanceController');
+
+Route::resource('niveauImportances', 'Niveau_ImportanceController');
+
+Route::resource('typeDemandes', 'Type_DemandeController');
+
+Route::resource('demandes', 'DemandeController');
+
+Route::resource('departements', 'DepartementController');
+
+Route::resource('contrats', 'ContratController');

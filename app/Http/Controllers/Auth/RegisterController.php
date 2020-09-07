@@ -70,8 +70,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $roles = Roles::all();
-        $selectedRole = 2;
+        //$roles = Roles::all();
+        //$selectedRole = 2;
         return User::create([
             'prenom' => $data['prenom'],
             'nom' => $data['nom'],
