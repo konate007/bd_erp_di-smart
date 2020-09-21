@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $type_demande_id
  * @property string $statut
  * @property integer $responsable
+ * @property string|\Carbon\Carbon $date_fermeture
  */
 class Demande extends Model
 {
@@ -38,7 +39,8 @@ class Demande extends Model
         'niveau_importance_id',
         'type_demande_id',
         'statut',
-        'responsable'
+        'responsable',
+        'date_fermeture'
     ];
 
     /**
@@ -55,7 +57,8 @@ class Demande extends Model
         'niveau_importance_id' => 'integer',
         'type_demande_id' => 'integer',
         'statut' => 'string',
-        'responsable' => 'integer'
+        'responsable' => 'integer',
+        'date_fermeture' => 'date'
     ];
 
     /**
@@ -70,7 +73,8 @@ class Demande extends Model
         'message' => 'required',
         'niveau_importance_id' => 'required',
         'type_demande_id' => 'required',
-        'statut' => 'required'
+        'statut' => 'required',
+        'date_fermeture' => 'required'
     ];
 
     

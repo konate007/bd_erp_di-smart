@@ -7,7 +7,7 @@
 <!-- Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('description', 'Description:') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder'=> 'Please select']) !!}
 </div>
 
 <!-- Client Id Field -->
@@ -21,7 +21,6 @@
     {!! Form::label('date_lancement', 'Date Lancement:') !!}
     {!! Form::text('date_lancement', null, ['class' => 'form-control','id'=>'date_lancement']) !!}
 </div>
-
 @push('scripts')
     <script type="text/javascript">
         $('#date_lancement').datetimepicker({
@@ -37,7 +36,6 @@
     {!! Form::label('date_livraison', 'Date Livraison:') !!}
     {!! Form::text('date_livraison', null, ['class' => 'form-control','id'=>'date_livraison']) !!}
 </div>
-
 @push('scripts')
     <script type="text/javascript">
         $('#date_livraison').datetimepicker({
@@ -48,8 +46,13 @@
     </script>
 @endpush
 
+<div class="form-group col-sm-6">
+    {!! Form::label('service_id', 'Service Id:') !!}
+    {!! Form::select('service_id', $serviceItems, null, ['class' => 'form-control','placeholder'=> 'Please select']) !!}
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('projets.index') }}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('projets.index') }}" class="btn btn-default">Annuler</a>
 </div>

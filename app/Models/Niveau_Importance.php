@@ -43,7 +43,7 @@ class Niveau_Importance extends Model
      * @var array
      */
     public static $rules = [
-        'niveau' => 'required'
+        'niveau' => 'required|unique:niveau__importances'
     ];
 
     

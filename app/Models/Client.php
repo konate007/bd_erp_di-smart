@@ -64,7 +64,7 @@ class Client extends Model
         'nom_client' => 'required',
         'adresse' => 'required',
         'telephone1' => 'required',
-        'email' => 'required'
+        'email' => 'required|unique:clients'
     ];
 
 

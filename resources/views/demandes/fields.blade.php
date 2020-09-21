@@ -13,13 +13,13 @@
 <!-- Projet User Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-    {!! Form::select('projet_user_id',$projet_userItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
+    {!! Form::select('projet_user_id',$projetItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
 </div>
 
 <!-- Message Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('message', 'Message:') !!}
-    {!! Form::text('message', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Niveau Importance Id Field -->
@@ -37,7 +37,7 @@
 <!-- Statut Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('statut', 'Statut:') !!}
-    {!! Form::text('statut', null, ['class' => 'form-control']) !!}
+    {!! Form::select('statut',$contratItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
 </div>
 
 <!-- Responsable Field -->
@@ -46,8 +46,24 @@
     {!! Form::select('responsable', $responsableItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
 </div>
 
+<!-- Date fermeture Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('date_fermeture', 'Date fermeture:') !!}
+    {!! Form::text('date_fermeture', null, ['class' => 'form-control']) !!}
+</div>
+@push('scripts')
+    <script type="text/javascript">
+        $('#date_fermeture').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            useCurrent: true,
+            sideBySide: true
+        })
+    </script>
+@endpush
+
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('demandes.index') }}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('demandes.index') }}" class="btn btn-default">Annuler</a>
 </div>

@@ -59,7 +59,7 @@ class User extends Model
     public static $rules = [
         'prenom' => 'required',
         'nom' => 'required',
-        'email' => 'required',
+        'email' => 'required|unique:users',
         'password' => 'required',
         'fonction' => 'required',
         'role_id' => 'required'

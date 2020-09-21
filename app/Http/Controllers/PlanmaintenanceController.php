@@ -31,8 +31,9 @@ class PlanmaintenanceController extends AppBaseController
     public function index(Request $request)
     {
         $planmaintenances = $this->planmaintenanceRepository->all();
-
-        return view('planmaintenances.index')
+        $services = Service::all() ;
+        
+        return view('planmaintenances.index',compact('services'))
             ->with('planmaintenances', $planmaintenances);
     }
 

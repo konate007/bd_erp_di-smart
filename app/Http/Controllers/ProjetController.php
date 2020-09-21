@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateProjetRequest;
 use App\Repositories\ProjetRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\Service;
 use Flash;
 use Response;
 
@@ -30,8 +32,10 @@ class ProjetController extends AppBaseController
     public function index(Request $request)
     {
         $projets = $this->projetRepository->all();
+        $clients = Client::all() ;
+        $services = Service::all() ;
 
-        return view('projets.index')
+        return view('projets.index', compact(['clients','services']))
             ->with('projets', $projets);
     }
 

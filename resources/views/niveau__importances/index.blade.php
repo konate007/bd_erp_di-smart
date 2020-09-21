@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Niveau  Importances</h1>
+        <h1 class="pull-left">Niveaux  d'importance</h1>
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('niveauImportances.create') }}">Add New</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('niveauImportances.create') }}">Ajouter</a>
         </h1>
     </section>
     <div class="content">

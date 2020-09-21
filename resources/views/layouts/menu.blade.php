@@ -1,3 +1,6 @@
+<li class="{{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a href="{{ route('dashboard.index') }}"><i class="fa fa-edit"></i><span>Tableau de bord</span></a>
+</li>
 <li class="{{ Request::is('roles*') ? 'active' : '' }}">
     <a href="{{ route('roles.index') }}"><i class="fa fa-edit"></i><span>Roles</span></a>
 </li>
@@ -23,7 +26,7 @@
 </li>
 
 <li class="{{ Request::is('planmaintenances*') ? 'active' : '' }}">
-    <a href="{{ route('planmaintenances.index') }}"><i class="fa fa-edit"></i><span>Planmaintenances</span></a>
+    <a href="{{ route('planmaintenances.index') }}"><i class="fa fa-edit"></i><span>Plans de maintenance</span></a>
 </li>
 
 <li class="{{ Request::is('contrats*') ? 'active' : '' }}">
@@ -31,7 +34,7 @@
 </li>
 
 <li class="{{ Request::is('niveauImportances*') ? 'active' : '' }}">
-    <a href="{{ route('niveauImportances.index') }}"><i class="fa fa-edit"></i><span>Niveau  Importances</span></a>
+    <a href="{{ route('niveauImportances.index') }}"><i class="fa fa-edit"></i><span>Niveaux  d'importance</span></a>
 </li>
 
 <li class="{{ Request::is('typeDemandes*') ? 'active' : '' }}">

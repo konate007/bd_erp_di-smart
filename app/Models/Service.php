@@ -43,7 +43,7 @@ class Service extends Model
      * @var array
      */
     public static $rules = [
-        'nom_service' => 'required'
+        'nom_service' => 'required|unique:services'
     ];
 
     

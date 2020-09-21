@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Role;
+
 use Flash;
 use Response;
 
@@ -32,8 +34,9 @@ class UserController extends AppBaseController
     public function index(Request $request)
     {
         $users = $this->userRepository->all();
+        $roles = Role::all() ;
 
-        return view('users.index')
+        return view('users.index',compact('roles'))
             ->with('users', $users);
     } 
 

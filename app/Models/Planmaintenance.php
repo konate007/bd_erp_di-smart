@@ -49,7 +49,7 @@ class Planmaintenance extends Model
      * @var array
      */
     public static $rules = [
-        'titre' => 'required',
+        'titre' => 'required|unique:planmaintenances',
         'service_id' => 'required',
         'description' => 'required'
     ];

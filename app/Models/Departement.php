@@ -43,7 +43,7 @@ class Departement extends Model
      * @var array
      */
     public static $rules = [
-        'nom_departement' => 'required'
+        'nom_departement' => 'required|unique:departements'
     ];
 
     

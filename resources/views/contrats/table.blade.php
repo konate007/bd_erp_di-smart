@@ -14,18 +14,32 @@
         <tbody>
         @foreach($contrats as $contrat)
             <tr>
-                <td>{{ $contrat->projet_user_id }}</td>
-            <td>{{ $contrat->planmaintenance_id }}</td>
-            <td>{{ $contrat->description }}</td>
-            <td>{{ $contrat->date_debut }}</td>
-            <td>{{ $contrat->date_fin }}</td>
-            <td>{{ $contrat->statut }}</td>
+                @foreach($projets as $projet)
+                        @if($contrat->projet_user_id == $projet->id)
+                            <td>{{ $projet->nom_projet }}</td>
+                        @endif
+                @endforeach
+                @foreach($planmaintenances as $planmaintenance)
+                    @if($contrat->planmaintenance_id == $planmaintenance->id)
+                        <td>{{ $planmaintenance->titre }}</td>
+                    @endif
+                @endforeach
+                <td>{{ $contrat->description }}</td>
+                <td>{{ $contrat->date_debut->toDateString() }}</td>
+                <td>{{ $contrat->date_fin->toDateString() }}</td>
+                @if ($contrat->statut == 0)
+                     <td>ENCOU</td>
+                @elseif ($contrat->statut == 1)
+                     <td>EXPIR</td>
+                @else
+                     <td>SUSPE</td>
+                @endif
                 <td>
                     {!! Form::open(['route' => ['contrats.destroy', $contrat->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('contrats.show', [$contrat->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                         <a href="{{ route('contrats.edit', [$contrat->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Etes-vous sûr?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

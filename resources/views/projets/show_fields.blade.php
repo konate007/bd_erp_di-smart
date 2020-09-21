@@ -28,6 +28,13 @@
     <p>{{ $projet->date_livraison }}</p>
 </div>
 
+<!-- Service Id Field -->
+<div class="form-group">
+    {!! Form::label('service_id', 'Service Id:') !!}
+    <p>{{ $projet->service_id }}</p>
+</div>
+
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

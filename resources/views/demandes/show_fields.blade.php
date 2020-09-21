@@ -46,6 +46,12 @@
     <p>{{ $demande->responsable }}</p>
 </div>
 
+<!-- Date fermeture Field -->
+<div class="form-group">
+    {!! Form::label('date_fermeture', 'Date fermeture:') !!}
+    <p>{{ $demande->date_fermeture }}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

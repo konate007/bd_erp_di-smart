@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Niveau  Importance
+            Niveaux  d'importance
         </h1>
    </section>
    <div class="content">

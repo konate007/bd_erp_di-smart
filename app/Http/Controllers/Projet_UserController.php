@@ -32,8 +32,10 @@ class Projet_UserController extends AppBaseController
     public function index(Request $request)
     {
         $projetUsers = $this->projetUserRepository->all();
+        $users = User::all() ;
+        $projets = Projet::all() ;
 
-        return view('projet_users.index')
+        return view('projet_users.index',compact(['users', 'projets']))
             ->with('projetUsers', $projetUsers);
     }
 

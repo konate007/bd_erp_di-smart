@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateContratRequest;
 use App\Repositories\ContratRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Planmaintenance;
+use App\Models\Projet;
 use Flash;
 use Response;
 
@@ -30,8 +32,11 @@ class ContratController extends AppBaseController
     public function index(Request $request)
     {
         $contrats = $this->contratRepository->all();
+        $planmaintenances = Planmaintenance::all() ;
+        $projets = Projet::all() ;
 
-        return view('contrats.index')
+
+        return view('contrats.index', compact(['planmaintenances', 'projets']))
             ->with('contrats', $contrats);
     }
 

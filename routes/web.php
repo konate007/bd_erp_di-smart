@@ -25,6 +25,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
+Route::resource('dashboard', 'DashboardController');
+
 Route::resource('roles', 'RoleController');
 
 Route::resource('users', 'UserController');

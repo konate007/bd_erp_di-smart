@@ -13,8 +13,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $nom_projet
  * @property string $description
  * @property integer $client_id
- * @property string $date_lancement
- * @property  $date_livraison
+ * @property string|\Carbon\Carbon $date_lancement
+ * @property string|\Carbon\Carbon $date_livraison
+ * @property integer $service_id
  */
 class Projet extends Model
 {
@@ -32,7 +33,8 @@ class Projet extends Model
         'description',
         'client_id',
         'date_lancement',
-        'date_livraison'
+        'date_livraison',
+        'service_id'
     ];
 
     /**
@@ -45,7 +47,8 @@ class Projet extends Model
         'nom_projet' => 'string',
         'description' => 'string',
         'client_id' => 'integer',
-        'date_lancement' => 'date'
+        'date_lancement' => 'date',
+        'service_id' => 'integer'
     ];
 
     /**
@@ -56,7 +59,8 @@ class Projet extends Model
     public static $rules = [
         'nom_projet' => 'required',
         'client_id' => 'required',
-        'date_lancement' => 'required'
+        'date_lancement' => 'required',
+        'service_id' => 'required'
     ];
 
     

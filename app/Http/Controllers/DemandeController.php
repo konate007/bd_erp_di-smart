@@ -7,6 +7,13 @@ use App\Http\Requests\UpdateDemandeRequest;
 use App\Repositories\DemandeRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Departement;
+use App\Models\Niveau_Importance;
+use App\Models\Type_Demande;
+use App\Models\User;
+use App\Models\Contrat;
+use App\Models\Projet;
+use App\Models\Projet_User;
 use Flash;
 use Response;
 
@@ -30,8 +37,15 @@ class DemandeController extends AppBaseController
     public function index(Request $request)
     {
         $demandes = $this->demandeRepository->all();
+        $departements = Departement::all() ;
+        $niveau_importances = Niveau_Importance::all() ;
+        $type_demandes = Type_Demande::all() ;
+        $projets = Projet::all() ;
+        $contrats = Contrat::all() ;
+        $projet_users = Projet_User::all() ;
+        $users = User::all() ;
 
-        return view('demandes.index')
+        return view('demandes.index',compact(['departements', 'niveau_importances', 'type_demandes', 'users', 'projets', 'projet_users', 'contrats']))
             ->with('demandes', $demandes);
     }
 

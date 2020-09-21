@@ -1,7 +1,7 @@
 <!-- Projet User Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-    {!! Form::select('projet_user_id', $projet_userItems, null, ['class' => 'form-control', 'placeholder'=> 'Please select']) !!}
+    {!! Form::select('projet_user_id', $projetItems, null, ['class' => 'form-control', 'placeholder'=> 'Please select']) !!}
 </div>
 
 <!-- Planmaintenance Id Field -->
@@ -21,7 +21,6 @@
     {!! Form::label('date_debut', 'Date Debut:') !!}
     {!! Form::text('date_debut', null, ['class' => 'form-control','id'=>'date_debut']) !!}
 </div>
-
 @push('scripts')
     <script type="text/javascript">
         $('#date_debut').datetimepicker({
@@ -51,11 +50,11 @@
 <!-- Statut Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('statut', 'Statut:') !!}
-    {!! Form::text('statut', null, ['class' => 'form-control']) !!}
+    {!! Form::select('statut',['ENCOU', 'EXPIR','SUSPE'], null, ['class' => 'form-control','placeholder'=> 'Please select']) !!}
 </div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('contrats.index') }}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('contrats.index') }}" class="btn btn-default">Annuler</a>
 </div>

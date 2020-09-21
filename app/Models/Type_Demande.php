@@ -43,7 +43,7 @@ class Type_Demande extends Model
      * @var array
      */
     public static $rules = [
-        'type' => 'required'
+        'type' => 'required|unique:type__demandes'
     ];
 
     
