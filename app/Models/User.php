@@ -2,23 +2,16 @@
 
 namespace App\Models;
 use Illuminate\Support\Facades\Auth;
-use Eloquent as Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Notifications\Notifiable;
 
-/**
- * Class User
- * @package App\Models
- * @version August 22, 2020, 8:06 pm UTC
- *
- * @property string $prenom
- * @property string $nom
- * @property string $email
- * @property string $password
- * @property string $fonction
- * @property  $role_id
- */
-class User extends Model
+class User extends Authenticatable
 {
+
+    use Notifiable;
     use SoftDeletes;
 
     public $table = 'users';
@@ -26,29 +19,22 @@ class User extends Model
 
     protected $dates = ['deleted_at'];
 
-
-
-    public $fillable = [
-        'prenom',
-        'nom',
-        'email',
-        'password',
-        'fonction',
-        'role_id'
-    ];
-
     /**
-     * The attributes that should be casted to native types.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $casts = [
-        'id' => 'integer',
-        'prenom' => 'string',
-        'nom' => 'string',
-        'email' => 'string',
-        'password' => 'string',
-        'fonction' => 'string'
+    protected $fillable = [
+        'prenom', 'nom', 'email', 'password', 'fonction', 'role_id'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
     ];
 
     /**
@@ -66,6 +52,22 @@ class User extends Model
     ];
 
 
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'prenom' => 'string',
+        'nom' => 'string',
+        'email' => 'string',
+        'password' => 'string',
+        'fonction' => 'string'
+    ];
+
+
+    
     public static function boot()
     {
         parent::boot();
@@ -74,6 +76,7 @@ class User extends Model
         {
             $model->user_created = Auth::user()->id ?? null;
             $model->user_modified = Auth::user()->id ?? null;
+            
         });
 
         static::updating( function ($model)
@@ -82,19 +85,9 @@ class User extends Model
         });
     }
     
-    public function setPasswordAttribute($password)
+    public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = \Hash::make($password);
+        $this->attributes['password'] = Hash::make($value);
     }
-
-    /**
-     * One to Many relation
-     *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function role()
-    {
-        return $this->belongsTo('App\Models\Role');
-    }
- 
+    
 }

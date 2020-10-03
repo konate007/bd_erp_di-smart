@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Notifications\NewUser;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Models\User;
 use App\Models\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -66,12 +67,11 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        //$roles = Roles::all();
-        //$selectedRole = 2;
+        
         return User::create([
             'prenom' => $data['prenom'],
             'nom' => $data['nom'],
@@ -82,9 +82,16 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function index()
+
+    /*
+    protected function registered(Request $request, User $user)
     {
-        //$rolesID= Role::pluck('id');
-        return 2;
+        $admins = User::whereAdmin(true)->get();
+        foreach($admins as $admin) {
+            $admin->notify(new NewUser());
+        }        
+    
     }
+    */
+
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Demande extends Model
 {
     use SoftDeletes;
+    
 
     public $table = 'demandes';
     

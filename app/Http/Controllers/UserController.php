@@ -6,6 +6,8 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewUser;
 use Illuminate\Http\Request;
 use App\Models\Role;
 
@@ -62,8 +64,11 @@ class UserController extends AppBaseController
         $input = $request->all();
 
         $user = $this->userRepository->create($input);
+        
 
         Flash::success('User saved successfully.');
+        $user = Auth::user();
+        $user->notify(new NewUser());
 
         return redirect(route('users.index'));
     }
@@ -129,6 +134,8 @@ class UserController extends AppBaseController
         $user = $this->userRepository->update($request->all(), $id);
 
         Flash::success('User updated successfully.');
+        $user = Auth::user();
+        $user->notify(new NewUser());
 
         return redirect(route('users.index'));
     }
@@ -158,4 +165,5 @@ class UserController extends AppBaseController
 
         return redirect(route('users.index'));
     }
+
 }

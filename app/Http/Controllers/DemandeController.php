@@ -6,6 +6,8 @@ use App\Http\Requests\CreateDemandeRequest;
 use App\Http\Requests\UpdateDemandeRequest;
 use App\Repositories\DemandeRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Notifications\DemandeNotification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Departement;
 use App\Models\Niveau_Importance;
@@ -56,6 +58,7 @@ class DemandeController extends AppBaseController
      */
     public function create()
     {
+
         return view('demandes.create');
     }
 
@@ -71,8 +74,11 @@ class DemandeController extends AppBaseController
         $input = $request->all();
 
         $demande = $this->demandeRepository->create($input);
+        $user = Auth::user();
+        $user->notify(new DemandeNotification());
 
         Flash::success('Demande saved successfully.');
+
 
         return redirect(route('demandes.index'));
     }
@@ -137,8 +143,12 @@ class DemandeController extends AppBaseController
         }
 
         $demande = $this->demandeRepository->update($request->all(), $id);
+        
+        $user = Auth::user();
+        $user->notify(new DemandeNotification());
 
         Flash::success('Demande updated successfully.');
+        
 
         return redirect(route('demandes.index'));
     }
@@ -163,6 +173,8 @@ class DemandeController extends AppBaseController
         }
 
         $this->demandeRepository->delete($id);
+        $user = Auth::user();
+        $user->notify(new DemandeNotification());
 
         Flash::success('Demande deleted successfully.');
 
