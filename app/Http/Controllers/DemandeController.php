@@ -74,8 +74,12 @@ class DemandeController extends AppBaseController
         $input = $request->all();
 
         $demande = $this->demandeRepository->create($input);
-        $user = Auth::user();
-        $user->notify(new DemandeNotification());
+        
+        $users = User::all();
+        foreach($users as $user)
+        {
+            $user->notify(new DemandeNotification());
+        }
 
         Flash::success('Demande saved successfully.');
 
@@ -144,8 +148,11 @@ class DemandeController extends AppBaseController
 
         $demande = $this->demandeRepository->update($request->all(), $id);
         
-        $user = Auth::user();
-        $user->notify(new DemandeNotification());
+        $users = User::all();
+        foreach($users as $user)
+        {
+            $user->notify(new DemandeNotification());
+        }
 
         Flash::success('Demande updated successfully.');
         

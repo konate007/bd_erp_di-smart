@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewUser;
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\User;
+
 
 use Flash;
 use Response;
@@ -67,8 +69,11 @@ class UserController extends AppBaseController
         
 
         Flash::success('User saved successfully.');
-        $user = Auth::user();
-        $user->notify(new NewUser());
+        $users = User::all();
+        foreach($users as $user)
+        {
+            $user->notify(new NewUser());
+        }
 
         return redirect(route('users.index'));
     }
@@ -134,8 +139,12 @@ class UserController extends AppBaseController
         $user = $this->userRepository->update($request->all(), $id);
 
         Flash::success('User updated successfully.');
-        $user = Auth::user();
-        $user->notify(new NewUser());
+        $users = User::all();
+        foreach($users as $user)
+        {
+            $user->notify(new NewUser());
+        }
+        
 
         return redirect(route('users.index'));
     }
