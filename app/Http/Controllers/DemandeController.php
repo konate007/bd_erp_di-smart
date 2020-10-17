@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateDemandeRequest;
 use App\Repositories\DemandeRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Notifications\DemandeNotification;
+use App\Notifications\UpdateDemandeNotification;
+use App\Notifications\AddDemandeNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Departement;
@@ -16,6 +18,8 @@ use App\Models\User;
 use App\Models\Contrat;
 use App\Models\Projet;
 use App\Models\Projet_User;
+use App\Models\Demande;
+
 use Flash;
 use Response;
 
@@ -24,9 +28,15 @@ class DemandeController extends AppBaseController
     /** @var  DemandeRepository */
     private $demandeRepository;
 
+    public static $identifiant ;
+    public static $id ;
+    public static $id_demande ;
+    public static $id_projet ;
+
     public function __construct(DemandeRepository $demandeRepo)
     {
         $this->demandeRepository = $demandeRepo;
+       
     }
 
     /**
@@ -47,7 +57,8 @@ class DemandeController extends AppBaseController
         $projet_users = Projet_User::all() ;
         $users = User::all() ;
 
-        return view('demandes.index',compact(['departements', 'niveau_importances', 'type_demandes', 'users', 'projets', 'projet_users', 'contrats']))
+        return view('demandes.index',compact(['departements', 'niveau_importances',
+        'type_demandes', 'users', 'projets', 'projet_users', 'contrats']))
             ->with('demandes', $demandes);
     }
 
@@ -76,9 +87,12 @@ class DemandeController extends AppBaseController
         $demande = $this->demandeRepository->create($input);
         
         $users = User::all();
+        self::$id_projet = Demande::find($demande->id)->projet_user_id ;
+        self::$id_demande = $demande->id ;
+       
         foreach($users as $user)
         {
-            $user->notify(new DemandeNotification());
+            $user->notify(new AddDemandeNotification());
         }
 
         Flash::success('Demande saved successfully.');
@@ -148,12 +162,16 @@ class DemandeController extends AppBaseController
 
         $demande = $this->demandeRepository->update($request->all(), $id);
         
+        self::setIdentifiant(Demande::find($id)->projet_user_id) ;
+        self::$id = $id ;
         $users = User::all();
+        
         foreach($users as $user)
         {
-            $user->notify(new DemandeNotification());
+            $user->notify(new UpdateDemandeNotification());
         }
-
+        
+       
         Flash::success('Demande updated successfully.');
         
 
@@ -187,4 +205,15 @@ class DemandeController extends AppBaseController
 
         return redirect(route('demandes.index'));
     }
+
+    public static function getIdentifiant()
+    {
+        return self::$identifiant;
+    }
+
+    public static function setIdentifiant($ident)
+    {
+        self::$identifiant = $ident ;
+    }
+
 }

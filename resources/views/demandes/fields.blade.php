@@ -49,17 +49,8 @@
 <!-- Date fermeture Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_fermeture', 'Date fermeture:') !!}
-    {!! Form::text('date_fermeture', null, ['class' => 'form-control']) !!}
+    {!! Form::date('date_fermeture', null, ['class' => 'form-control']) !!}
 </div>
-@push('scripts')
-    <script type="text/javascript">
-        $('#date_fermeture').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: true,
-            sideBySide: true
-        })
-    </script>
-@endpush
 
 
 <!-- Submit Field -->
