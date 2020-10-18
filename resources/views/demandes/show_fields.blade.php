@@ -1,19 +1,19 @@
 <!-- Objet Field -->
 <div class="form-group">
     {!! Form::label('objet', 'Objet:') !!}
-    <p>{{ $demande->objet }}</p>
+    <p>{{ $demande->objet  }}</p>
 </div>
 
 <!-- Departement Id Field -->
 <div class="form-group">
     {!! Form::label('departement_id', 'Departement Id:') !!}
-    <p>{{ $demande->departement_id }}</p>
+    <p>{{$departements->find($demande->departement_id)->nom_departement}}</p>
 </div>
 
 <!-- Projet User Id Field -->
 <div class="form-group">
     {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-    <p>{{ $demande->projet_user_id }}</p>
+    <p>{{$projets->find($demande->projet_user_id)->nom_projet }}</p>
 </div>
 
 <!-- Message Field -->
@@ -25,25 +25,25 @@
 <!-- Niveau Importance Id Field -->
 <div class="form-group">
     {!! Form::label('niveau_importance_id', 'Niveau Importance Id:') !!}
-    <p>{{ $demande->niveau_importance_id }}</p>
+    <p>{{$niveau_importances->find($demande->niveau_importance_id)->niveau }}</p>
 </div>
 
 <!-- Type Demande Id Field -->
 <div class="form-group">
     {!! Form::label('type_demande_id', 'Type Demande Id:') !!}
-    <p>{{ $demande->type_demande_id }}</p>
+    <p>{{$type_demandes->find($demande->type_demande_id)->type }}</p>
 </div>
 
 <!-- Statut Field -->
 <div class="form-group">
     {!! Form::label('statut', 'Statut:') !!}
-    <p>{{ $demande->statut }}</p>
+    <p>{{$contrats->find($demande->statut)->statut }}</p>
 </div>
 
 <!-- Responsable Field -->
 <div class="form-group">
     {!! Form::label('responsable', 'Responsable:') !!}
-    <p>{{ $demande->responsable }}</p>
+    <p>{{ $users->find($demande->responsable)->nom }}</p>
 </div>
 
 <!-- Date fermeture Field -->

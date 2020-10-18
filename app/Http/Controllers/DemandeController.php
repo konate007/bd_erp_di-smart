@@ -112,13 +112,23 @@ class DemandeController extends AppBaseController
     {
         $demande = $this->demandeRepository->find($id);
 
+        $demandes = $this->demandeRepository->all();
+        $departements = Departement::all() ;
+        $niveau_importances = Niveau_Importance::all() ;
+        $type_demandes = Type_Demande::all() ;
+        $projets = Projet::all() ;
+        $contrats = Contrat::all() ;
+        $projet_users = Projet_User::all() ;
+        $users = User::all() ;
+
         if (empty($demande)) {
             Flash::error('Demande not found');
 
             return redirect(route('demandes.index'));
         }
 
-        return view('demandes.show')->with('demande', $demande);
+        return view('demandes.show',compact(['demandes','departements', 'niveau_importances',
+        'type_demandes', 'users', 'projets', 'projet_users', 'contrats']))->with('demande', $demande);
     }
 
     /**
