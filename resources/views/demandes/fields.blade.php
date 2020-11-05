@@ -37,7 +37,7 @@
 <!-- Statut Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('statut', 'Statut:') !!}
-    {!! Form::select('statut',$contratItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
+    {!! Form::select('statut',['OPEN','INPRO','CLOSE','STAND'], null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
 </div>
 
 <!-- Responsable Field -->

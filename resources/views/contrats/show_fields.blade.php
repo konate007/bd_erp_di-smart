@@ -1,13 +1,13 @@
 <!-- Projet User Id Field -->
 <div class="form-group">
     {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-    <p>{{ $contrat->projet_user_id }}</p>
+    <p>{{ $projets->find($contrat->projet_user_id)->nom_projet }}</p>
 </div>
 
 <!-- Planmaintenance Id Field -->
 <div class="form-group">
     {!! Form::label('planmaintenance_id', 'Planmaintenance Id:') !!}
-    <p>{{ $contrat->planmaintenance_id }}</p>
+    <p>{{ $planmaintenances->find($contrat->planmaintenance_id)->titre }}</p>
 </div>
 
 <!-- Description Field -->
@@ -31,7 +31,13 @@
 <!-- Statut Field -->
 <div class="form-group">
     {!! Form::label('statut', 'Statut:') !!}
-    <p>{{ $contrat->statut }}</p>
+    @if ($contrat->statut == 0)
+        <p>ENCOU</p>
+    @elseif ($contrat->statut == 1)
+        <p>EXPIR</p>
+    @else
+        <p>SUSPE</p>
+    @endif
 </div>
 
 <!-- Created At Field -->

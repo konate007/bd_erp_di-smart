@@ -82,6 +82,8 @@ class DemandeController extends AppBaseController
      */
     public function store(CreateDemandeRequest $request)
     {
+        $status = array('OPEN','INPRO','CLOSE','STAND');
+        $request->merge(['statut' => $status[$request->statut]]);
         $input = $request->all();
 
         $demande = $this->demandeRepository->create($input);
@@ -163,6 +165,8 @@ class DemandeController extends AppBaseController
     public function update($id, UpdateDemandeRequest $request)
     {
         $demande = $this->demandeRepository->find($id);
+        $status = array('OPEN','INPRO','CLOSE','STAND');
+        $request->merge(['statut' => $status[$request->statut]]);
 
         if (empty($demande)) {
             Flash::error('Demande not found');

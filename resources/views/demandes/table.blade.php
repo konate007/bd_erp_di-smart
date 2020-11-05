@@ -39,11 +39,16 @@
                        <td>{{ $type_demande->type }}</td>
                     @endif
                 @endforeach
-                @foreach($contrats as $contrat)
-                    @if($demande->statut == $contrat->id)
-                       <td>{{ $contrat->statut }}</td>
-                    @endif
-                @endforeach
+                @if ($demande->statut == 0)
+                     <td>OPEN</td>
+                @endif
+                @if ($demande->statut ==1)
+                     <td>INPRO</td>
+                @elseif ($demande->statut == 2)
+                     <td>CLOSE</td>
+                @else
+                     <td>STAND</td>
+                @endif
                 @foreach($users as $user)
                     @if($demande->responsable == $user->id)
                        <td>{{ $user->nom }}</td>

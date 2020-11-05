@@ -67,9 +67,6 @@ class UpdateDemandeNotification extends Notification
     public function toDatabase($notifiable) {
         //This will be stored in Database, You'll fetch this notification later to display in application
         return [
-            'prenom' => Auth::user()->prenom,
-            'nom' => Auth::user()->nom,
-            'email' => Auth::user()->email,
         ];
     }
 }

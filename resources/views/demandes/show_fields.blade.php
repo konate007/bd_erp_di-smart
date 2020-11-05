@@ -37,7 +37,17 @@
 <!-- Statut Field -->
 <div class="form-group">
     {!! Form::label('statut', 'Statut:') !!}
-    <p>{{$contrats->find($demande->statut)->statut }}</p>
+    @if ($demande->statut == 0)
+        <p>OPEN</p>
+    @endif
+    @if ($demande->statut ==1)
+        <p>INPRO</p>
+    @elseif ($demande->statut == 2)
+        <p>CLOSE</p>
+    @else
+        <p>STAND</p>
+    @endif
+    
 </div>
 
 <!-- Responsable Field -->
@@ -58,7 +68,7 @@
     <p>{{ $demande->created_at }}</p>
 </div>
 
-<!-- Updated At Field -->
+<!-- Updated At Field -->   
 <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{{ $demande->updated_at }}</p>

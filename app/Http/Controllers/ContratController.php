@@ -8,6 +8,7 @@ use App\Repositories\ContratRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\Planmaintenance;
+use App\Models\Projet_User;
 use App\Models\Projet;
 use Flash;
 use Response;
@@ -59,6 +60,8 @@ class ContratController extends AppBaseController
      */
     public function store(CreateContratRequest $request)
     {
+        $status = array('ENCOU', 'EXPIR','SUSPE');
+        $request->merge(['statut' => $status[$request->statut]]);
         $input = $request->all();
 
         $contrat = $this->contratRepository->create($input);
@@ -78,6 +81,8 @@ class ContratController extends AppBaseController
     public function show($id)
     {
         $contrat = $this->contratRepository->find($id);
+        $planmaintenances = Planmaintenance::all() ;
+        $projets = Projet::all() ;
 
         if (empty($contrat)) {
             Flash::error('Contrat not found');
@@ -85,7 +90,7 @@ class ContratController extends AppBaseController
             return redirect(route('contrats.index'));
         }
 
-        return view('contrats.show')->with('contrat', $contrat);
+        return view('contrats.show',compact(['planmaintenances','projet_users']))->with('contrat', $contrat);
     }
 
     /**
@@ -120,17 +125,18 @@ class ContratController extends AppBaseController
     public function update($id, UpdateContratRequest $request)
     {
         $contrat = $this->contratRepository->find($id);
+        $status = array('ENCOU', 'EXPIR','SUSPE');
 
         if (empty($contrat)) {
             Flash::error('Contrat not found');
 
             return redirect(route('contrats.index'));
         }
+        $request->merge(['statut' => $status[$request->statut]]);
 
         $contrat = $this->contratRepository->update($request->all(), $id);
 
         Flash::success('Contrat updated successfully.');
-
         return redirect(route('contrats.index'));
     }
 
