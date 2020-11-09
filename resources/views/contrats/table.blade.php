@@ -2,7 +2,7 @@
     <table class="table" id="contrats-table">
         <thead>
             <tr>
-                <th>Projet User Id</th>
+                <th>Projet Id</th>
         <th>Planmaintenance Id</th>
         <th>Description</th>
         <th>Date Debut</th>
@@ -14,11 +14,8 @@
         <tbody>
         @foreach($contrats as $contrat)
             <tr>
-                @foreach($projets as $projet)
-                        @if($contrat->projet_user_id == $projet->id)
-                            <td>{{ $projet->nom_projet }}</td>
-                        @endif
-                @endforeach
+                <td>{{ $projets->find($contrat->projet_id)->nom_projet }}</td>
+
                 @foreach($planmaintenances as $planmaintenance)
                     @if($contrat->planmaintenance_id == $planmaintenance->id)
                         <td>{{ $planmaintenance->titre }}</td>

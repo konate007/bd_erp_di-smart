@@ -28,6 +28,12 @@
     <p>{{ $projet->date_livraison }}</p>
 </div>
 
+<!-- Responsable Field -->
+<div class="form-group">
+    {!! Form::label('responsable', 'Responsable:') !!}
+    <p>{{ $users->find($projet->responsable)->nom }}</p>
+</div>
+
 <!-- Service Id Field -->
 <div class="form-group">
     {!! Form::label('service_id', 'Service Id:') !!}

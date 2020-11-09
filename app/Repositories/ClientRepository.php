@@ -23,6 +23,7 @@ class ClientRepository extends BaseRepository
         'telephone2',
         'email',
         'site_web',
+        'user_id',
         'notes'
     ];
 

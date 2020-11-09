@@ -54,7 +54,7 @@ Auth::routes(['verify' => true]);
 
 //Espace client
 Route::get('liste_demandes', 'EspaceClientController@listeDemande')->name('liste_demandes');
-Route::get('equipe_projet', 'EspaceClientController@listeEquipeProjet')->name('equipe_projet');
+Route::get('liste_contrats', 'EspaceClientController@listeContrat')->name('liste_contrats');
 Route::get('liste_projets', 'EspaceClientController@listeProjet')->name('liste_projets');
 Route::get('demande_form', 'EspaceClientController@demandeForm')->name('demande_form');
 Route::any('soumission', 'EspaceClientController@registration')->name('soumission');

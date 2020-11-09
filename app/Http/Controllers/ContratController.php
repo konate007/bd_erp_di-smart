@@ -48,7 +48,8 @@ class ContratController extends AppBaseController
      */
     public function create()
     {
-        return view('contrats.create');
+        $projets = Projet::all() ;
+        return view('contrats.create',compact(['projets']));
     }
 
     /**
@@ -63,12 +64,13 @@ class ContratController extends AppBaseController
         $status = array('ENCOU', 'EXPIR','SUSPE');
         $request->merge(['statut' => $status[$request->statut]]);
         $input = $request->all();
+        $projets = Projet::all() ;
 
         $contrat = $this->contratRepository->create($input);
 
         Flash::success('Contrat saved successfully.');
 
-        return redirect(route('contrats.index'));
+        return redirect(route('contrats.index',compact(['projets'])));
     }
 
     /**
@@ -90,7 +92,7 @@ class ContratController extends AppBaseController
             return redirect(route('contrats.index'));
         }
 
-        return view('contrats.show',compact(['planmaintenances','projet_users']))->with('contrat', $contrat);
+        return view('contrats.show',compact(['planmaintenances','projets']))->with('contrat', $contrat);
     }
 
     /**
@@ -104,6 +106,7 @@ class ContratController extends AppBaseController
     {
         
         $contrat = $this->contratRepository->find($id);
+        $projets = Projet::all() ;
 
         if (empty($contrat)) {
             Flash::error('Contrat not found');
@@ -111,7 +114,7 @@ class ContratController extends AppBaseController
             return redirect(route('contrats.index'));
         }
 
-        return view('contrats.edit')->with('contrat', $contrat);
+        return view('contrats.edit',compact(['projets']))->with('contrat', $contrat);
     }
 
     /**

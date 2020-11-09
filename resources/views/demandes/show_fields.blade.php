@@ -10,10 +10,10 @@
     <p>{{$departements->find($demande->departement_id)->nom_departement}}</p>
 </div>
 
-<!-- Projet User Id Field -->
+<!-- Projet Id Field -->
 <div class="form-group">
-    {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-    <p>{{$projets->find($demande->projet_user_id)->nom_projet }}</p>
+    {!! Form::label('projet_id', 'Projet Id:') !!}
+    <p>{{ $projets->find($demande->projet_id)->nom_projet }}</p>
 </div>
 
 <!-- Message Field -->
@@ -48,12 +48,6 @@
         <p>STAND</p>
     @endif
     
-</div>
-
-<!-- Responsable Field -->
-<div class="form-group">
-    {!! Form::label('responsable', 'Responsable:') !!}
-    <p>{{ $users->find($demande->responsable)->nom }}</p>
 </div>
 
 <!-- Date fermeture Field -->

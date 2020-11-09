@@ -13,6 +13,8 @@ $factory->define(Projet::class, function (Faker $faker) {
         'client_id' => $faker->randomDigitNotNull,
         'date_lancement' => $faker->word,
         'date_livraison' => $faker->word,
+        'responsable' => $faker->randomDigitNotNull,
+        'service_id' => $faker->randomDigitNotNull,
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s')
     ];

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $client_id
  * @property string|\Carbon\Carbon $date_lancement
  * @property string|\Carbon\Carbon $date_livraison
+ * @property integer $responsable
  * @property integer $service_id
  */
 class Projet extends Model
@@ -34,6 +35,7 @@ class Projet extends Model
         'client_id',
         'date_lancement',
         'date_livraison',
+        'responsable',
         'service_id'
     ];
 
@@ -48,6 +50,7 @@ class Projet extends Model
         'description' => 'string',
         'client_id' => 'integer',
         'date_lancement' => 'date',
+        'responsable' => 'integer',
         'service_id' => 'integer'
     ];
 
@@ -60,6 +63,7 @@ class Projet extends Model
         'nom_projet' => 'required',
         'client_id' => 'required',
         'date_lancement' => 'required',
+        'responsable' => 'required',
         'service_id' => 'required'
     ];
 

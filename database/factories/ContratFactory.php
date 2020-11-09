@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Contrat::class, function (Faker $faker) {
 
     return [
-        'projet_user_id' => $faker->randomDigitNotNull,
+        'projet_id' => $faker->randomDigitNotNull,
         'planmaintenance_id' => $faker->randomDigitNotNull,
         'description' => $faker->text,
         'date_debut' => $faker->date('Y-m-d H:i:s'),

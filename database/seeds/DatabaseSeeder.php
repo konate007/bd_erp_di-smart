@@ -1,9 +1,6 @@
 <?php
-namespace Database\Seeds;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AdminSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(NiveauImportanceSeeder::class);
+        $this->call(ServicesTableSeeder::class);
+        //$this->call(DepartementsTableSeeder::class);
     }
-    
 }

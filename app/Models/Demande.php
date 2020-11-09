@@ -13,12 +13,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property string $objet
  * @property integer $departement_id
- * @property integer $projet_user_id
+ * @property integer $projet_id
  * @property string $message
  * @property integer $niveau_importance_id
  * @property integer $type_demande_id
  * @property string $statut
- * @property integer $responsable
  * @property string|\Carbon\Carbon $date_fermeture
  */
 class Demande extends Model
@@ -36,12 +35,11 @@ class Demande extends Model
     public $fillable = [
         'objet',
         'departement_id',
-        'projet_user_id',
+        'projet_id',
         'message',
         'niveau_importance_id',
         'type_demande_id',
         'statut',
-        'responsable',
         'date_fermeture'
     ];
 
@@ -54,12 +52,11 @@ class Demande extends Model
         'id' => 'integer',
         'objet' => 'string',
         'departement_id' => 'integer',
-        'projet_user_id' => 'integer',
+        'projet_id' => 'integer',
         'message' => 'string',
         'niveau_importance_id' => 'integer',
         'type_demande_id' => 'integer',
         'statut' => 'string',
-        'responsable' => 'integer',
         'date_fermeture' => 'date'
     ];
 
@@ -71,7 +68,7 @@ class Demande extends Model
     public static $rules = [
         'objet' => 'required',
         'departement_id' => 'required',
-        'projet_user_id' => 'required',
+        'projet_id' => 'required',
         'message' => 'required',
         'niveau_importance_id' => 'required',
         'type_demande_id' => 'required',

@@ -21,6 +21,7 @@ class CreateTableClients extends Migration
             $table->integer('telephone2')->unsigned()->nullable();
             $table->string('email',100)->unique();
             $table->string('site_web',100)->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->text('notes')->nullable();
             $table->integer('user_created')->unsigned()->nullable();
             $table->integer('user_modified')->unsigned()->nullable();

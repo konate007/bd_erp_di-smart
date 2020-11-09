@@ -7,6 +7,7 @@
                 <th>Client Id</th>
                 <th>Date Lancement</th>
                 <th>Date Livraison</th>
+                <th>Responsable</th>
                 <th>Service Id</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -21,8 +22,13 @@
                         <td>{{ $client->nom_client }}</td>
                     @endif
                 @endforeach
-                <td>{{ $projet->date_lancement->toDateString() }}</td>
+                <td>{{ $projet->date_lancement }}</td>
                 <td>{{ $projet->date_livraison }}</td>
+                @foreach($users as $user)
+                    @if($projet->responsable == $user->id)
+                       <td>{{ $user->nom }}</td>
+                    @endif
+                @endforeach
                 @foreach($services as $service)
                     @if($projet->service_id == $service->id)
                         <td>{{ $service->nom_service }}</td>

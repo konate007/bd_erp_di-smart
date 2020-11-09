@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Notifications\NewUser;
 use Illuminate\Http\Request;
 use App\Models\Role;
@@ -173,6 +174,12 @@ class UserController extends AppBaseController
         Flash::success('User deleted successfully.');
 
         return redirect(route('users.index'));
+    }
+
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
     }
 
 }

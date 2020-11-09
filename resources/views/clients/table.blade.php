@@ -8,6 +8,7 @@
         <th>Telephone2</th>
         <th>Email</th>
         <th>Site Web</th>
+        <th>User id</th>
         <th>Notes</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -21,6 +22,7 @@
             <td>{{ $client->telephone2 }}</td>
             <td>{{ $client->email }}</td>
             <td>{{ $client->site_web }}</td>
+            <td>{{ $users->find($client->user_id)->nom }}</td>
             <td>{{ $client->notes }}</td>
                 <td>
                     {!! Form::open(['route' => ['clients.destroy', $client->id], 'method' => 'delete']) !!}

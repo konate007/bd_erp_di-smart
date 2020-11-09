@@ -19,12 +19,11 @@ class DemandeRepository extends BaseRepository
     protected $fieldSearchable = [
         'objet',
         'departement_id',
-        'projet_user_id',
+        'projet_id',
         'message',
         'niveau_importance_id',
         'type_demande_id',
-        'statut',
-        'responsable'
+        'statut'
     ];
 
     /**

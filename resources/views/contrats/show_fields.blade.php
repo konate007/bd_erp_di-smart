@@ -1,7 +1,7 @@
-<!-- Projet User Id Field -->
+<!-- Projet Id Field -->
 <div class="form-group">
-    {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-    <p>{{ $projets->find($contrat->projet_user_id)->nom_projet }}</p>
+    {!! Form::label('projet_id', 'Projet Id:') !!}
+    <p>{{ $projets->find($contrat->projet_id)->nom_projet }}</p>
 </div>
 
 <!-- Planmaintenance Id Field -->

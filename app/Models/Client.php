@@ -16,7 +16,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $telephone2
  * @property string $email
  * @property string $site_web
+ * @property integer $user_id
  * @property string $notes
+ * 
  */
 class Client extends Model
 {
@@ -36,6 +38,7 @@ class Client extends Model
         'telephone2',
         'email',
         'site_web',
+        'user_id',
         'notes'
     ];
 
@@ -52,6 +55,7 @@ class Client extends Model
         'telephone2' => 'integer',
         'email' => 'string',
         'site_web' => 'string',
+        'user_id' => 'integer',
         'notes' => 'string'
     ];
 
@@ -64,7 +68,8 @@ class Client extends Model
         'nom_client' => 'required',
         'adresse' => 'required',
         'telephone1' => 'required',
-        'email' => 'required|unique:clients'
+        'email' => 'required|unique:clients',
+        'user_id' => 'required'
     ];
 
 

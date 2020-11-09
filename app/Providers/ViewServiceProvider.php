@@ -41,6 +41,10 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('clientItems', $clientItems);
         });
         View::composer(['projets.fields'], function ($view) {
+            $responsableItems = User::where('role_id',1)->pluck('nom','id')->toArray();
+            $view->with('responsableItems', $responsableItems);
+        });
+        View::composer(['projets.fields'], function ($view) {
             $serviceItems = Service::pluck('nom_service','id')->toArray();
             $view->with('serviceItems', $serviceItems);
         });
@@ -48,20 +52,22 @@ class ViewServiceProvider extends ServiceProvider
             $roleItems = Role::pluck('nom_role','id')->toArray();
             $view->with('roleItems', $roleItems);
         });
-        View::composer(['projet_users.fields'], function ($view) {
-            $userItems = User::pluck('nom','id')->toArray();
+        View::composer(['clients.fields'], function ($view) {
+            $userItems = User::where('role_id',2)->pluck('nom','id')->toArray();
             $view->with('userItems', $userItems);
         });
+        /*
         View::composer(['projet_users.fields'], function ($view) {
             $projetItems = Projet::pluck('nom_projet','id')->toArray();
             $view->with('projetItems', $projetItems);
         });
+        */
         View::composer(['planmaintenances.fields'], function ($view) {
             $serviceItems = Service::pluck('nom_service','id')->toArray();
             $view->with('serviceItems', $serviceItems);
         });
-        View::composer(['contrats.fields', 'projet_users.fields'], function ($view) {
-            $projet_userItems = Projet_User::pluck('user_id','id')->toArray();
+        View::composer(['contrats.fields'], function ($view) {
+            //$projet_userItems = Projet::pluck('user_id','id')->toArray();
             $projetItems = Projet::pluck('nom_projet','id')->toArray();
             $view->with('projetItems', $projetItems);
         });
@@ -74,8 +80,8 @@ class ViewServiceProvider extends ServiceProvider
             $departementItems = Departement::pluck('nom_departement','id')->toArray();
             $view->with('departementItems', $departementItems);
         });
-        View::composer(['demandes.fields', 'projet_users.fields'], function ($view) {
-            $projet_userItems = Projet_User::pluck('projet_id','id')->toArray();
+        View::composer(['demandes.fields'], function ($view) {
+            //$projet_userItems = Projet_User::pluck('projet_id','id')->toArray();
             $projetItems = Projet::pluck('nom_projet','id')->toArray();
             $view->with('projetItems', $projetItems);
         });
@@ -87,14 +93,18 @@ class ViewServiceProvider extends ServiceProvider
             $type_demandeItems = Type_Demande::pluck('type','id')->toArray();
             $view->with('type_demandeItems', $type_demandeItems);
         });
+        /*
         View::composer(['demandes.fields'], function ($view) {
             $responsableItems = User::pluck('nom','id')->toArray();
             $view->with('responsableItems', $responsableItems);
         });
+        */
+
+        /*
         View::composer(['demandes.fields'], function ($view) {
             $contratItems = Contrat::pluck('statut','id')->toArray();
             $view->with('contratItems', $contratItems);
         });
-        //
+        */
     }
 }

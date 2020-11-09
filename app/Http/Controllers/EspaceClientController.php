@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Flash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Contrat;
 use App\Models\Demande;
 use App\Models\Departement;
@@ -80,30 +81,28 @@ class EspaceclientController extends Controller
 
 
     public function listeDemande (Request $request) {
-
-        $projet_users = Projet_User::where('user_id', auth()->user()->id)->first();
-        $demandes = Demande::where('projet_user_id', $projet_users->id)->get();
-
+        
+        $client = Client::where('user_id', Auth::user()->id)->first();
+        $projet = Projet::where('client_id', $client->id)->first();
+        $demandes = Demande::where('projet_id', $projet->id)->get();
 
         $departements = Departement::all();
         $niveau_importances = Niveau_Importance::all();
         $type_demandes = Type_Demande::all();
-        $projets = Projet::all();
-        $contrats = Contrat::all();
-        $users = User::all();
+        $clients = Client::all();
+        $projets = Projet::all() ;
 
         return view('espaceclients.liste_demandes',compact(['departements', 
-        'niveau_importances', 'type_demandes', 'users', 'projets', 'projet_users', 'contrats']))
+        'niveau_importances', 'type_demandes', 'clients', 'projets']))
             ->with('demandes', $demandes);
     }
 
-    public function listeProjet (Request $request) {
+    public function listeProjet (Request $request)
+    {
 
-        $user = User::where('id', auth()->user()->id)->first();
-        $projet_users = Projet_User::where('user_id', $user->id)->get();
-        $projet_users = Projet_User::where('user_id', $user->id)->get();
+        $client = Client::where('user_id', Auth::user()->id)->first();
+        $projets = Projet::where('client_id', $client->id)->get();
 
-        $projets = Projet::all();
         $clients = Client::all();
         $services = Service::all();
 
@@ -111,15 +110,15 @@ class EspaceclientController extends Controller
             ->with('projets', $projets);
     }
 
-    public function listeEquipeProjet (Request $request) {
+    public function listeContrat (Request $request) {
 
         $user = User::where('id', auth()->user()->id)->first();
-        $equipeprojets = Projet_User::where('user_id', $user->id)->get();
+        $contrats = Projet_User::where('user_id', $user->id)->get();
 
         $projets = Projet::all();
         $users = User::all();
 
-        return view('espaceclients.equipe_projet',compact(['user', 'projets', 'users']))
+        return view('espaceclients.liste_contrats',compact(['user', 'projets', 'users']))
             ->with('equipeprojets', $equipeprojets);
     }
 

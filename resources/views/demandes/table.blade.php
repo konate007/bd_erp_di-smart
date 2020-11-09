@@ -4,12 +4,11 @@
             <tr>
                 <th>Objet</th>
                 <th>Departement Id</th>
-                <th>Projet User Id</th>
+                <th>Projet Id</th>
                 <th>Message</th>
                 <th>Niveau Importance Id</th>
                 <th>Type Demande Id</th>
                 <th>Statut</th>
-                <th>Responsable</th>
                 <th>Date fermeture</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -23,11 +22,9 @@
                     <td>{{ $departement->nom_departement }}</td>
                     @endif
                 @endforeach
-                @foreach($projets as $projet)
-                        @if($demande->projet_user_id == $projet->id)
-                            <td>{{ $projet->nom_projet }}</td>
-                        @endif
-                @endforeach
+                
+                <td>{{ $projets->find($demande->projet_id)->nom_projet }}</td>
+
                 <td>{{ $demande->message }}</td>
                 @foreach($niveau_importances as $niveau_importance)
                     @if($demande->niveau_importance_id == $niveau_importance->id)
@@ -49,11 +46,7 @@
                 @else
                      <td>STAND</td>
                 @endif
-                @foreach($users as $user)
-                    @if($demande->responsable == $user->id)
-                       <td>{{ $user->nom }}</td>
-                    @endif
-                @endforeach
+                
                 <td>{{ $demande->date_fermeture->toDateString() }}</td>
                 <td>
                     {!! Form::open(['route' => ['demandes.destroy', $demande->id], 'method' => 'delete']) !!}

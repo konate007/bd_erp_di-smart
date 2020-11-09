@@ -34,10 +34,16 @@
     {!! Form::text('site_web', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- User Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::select('user_id',$userItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
+</div>
+
 <!-- Notes Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('notes', 'Notes:') !!}
-    {!! Form::text('notes', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('notes', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

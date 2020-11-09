@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateClientRequest;
 use App\Repositories\ClientRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 use Flash;
 use Response;
 
@@ -30,8 +32,9 @@ class ClientController extends AppBaseController
     public function index(Request $request)
     {
         $clients = $this->clientRepository->all();
+        $users = User::all() ;
 
-        return view('clients.index')
+        return view('clients.index', compact(['users']))
             ->with('clients', $clients);
     }
 
@@ -42,7 +45,8 @@ class ClientController extends AppBaseController
      */
     public function create()
     {
-        return view('clients.create');
+        $users = User::all() ;
+        return view('clients.create',compact(['users']));
     }
 
     /**
@@ -57,10 +61,11 @@ class ClientController extends AppBaseController
         $input = $request->all();
 
         $client = $this->clientRepository->create($input);
+        $users = User::all() ;
 
         Flash::success('Client saved successfully.');
 
-        return redirect(route('clients.index'));
+        return redirect(route('clients.index',compact(['users'])));
     }
 
     /**
@@ -73,6 +78,7 @@ class ClientController extends AppBaseController
     public function show($id)
     {
         $client = $this->clientRepository->find($id);
+        $users = User::all() ;
 
         if (empty($client)) {
             Flash::error('Client not found');
@@ -80,7 +86,7 @@ class ClientController extends AppBaseController
             return redirect(route('clients.index'));
         }
 
-        return view('clients.show')->with('client', $client);
+        return view('clients.show',compact(['users']))->with('client', $client);
     }
 
     /**
@@ -93,6 +99,7 @@ class ClientController extends AppBaseController
     public function edit($id)
     {
         $client = $this->clientRepository->find($id);
+        $users = User::all() ;
 
         if (empty($client)) {
             Flash::error('Client not found');
@@ -100,7 +107,7 @@ class ClientController extends AppBaseController
             return redirect(route('clients.index'));
         }
 
-        return view('clients.edit')->with('client', $client);
+        return view('clients.edit',compact(['users']))->with('client', $client);
     }
 
     /**

@@ -18,11 +18,7 @@
                 <tr>
                     <td>{{ $projet->nom_projet }}</td>
                     <td>{{ $projet->description }}</td>
-                    @foreach($clients as $client)
-                        @if($projet->client_id == $client->id)
-                            <td>{{ $client->nom_client }}</td>
-                        @endif
-                    @endforeach
+                    <td>{{ $clients->find($projet->client_id)->nom_client }}</td>
                     <td>{{ $projet->date_lancement }}</td>
                     <td>{{ $projet->date_livraison }}</td>
                     @foreach($services as $service)

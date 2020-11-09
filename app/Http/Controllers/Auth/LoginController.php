@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -41,6 +41,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /*
     public function login(Request $request)
     {
         $input = $request->all();
@@ -68,4 +69,27 @@ class LoginController extends Controller
                 ->with('error','Email-Address And Password Are Wrong.');
         }
     }
+    */
+
+    public function authenticated(Request $request)
+    {
+        $input = $request->all();
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->role_id == 1) {
+                return redirect()->route('home');
+            }else{
+                return redirect()->route('espaceclients.index');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Email-Address And Password Are Wrong.');
+        }
+    }
+
 }

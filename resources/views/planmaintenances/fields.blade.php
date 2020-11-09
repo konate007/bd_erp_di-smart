@@ -7,7 +7,7 @@
 <!-- Service Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('service_id', 'Service Id:') !!}
-    {!! Form::select('service_id',$servicesIDs, null, ['class' => 'form-control']) !!}
+    {!! Form::select('service_id',$serviceItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Description Field -->

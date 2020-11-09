@@ -90,4 +90,22 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
     
+
+    public  function roles() {
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+    public function hasAnyRoles (array $roles) {
+        if ($this->roles()->whereIn('nom_role', $roles)->first()) {
+            return true;
+        }
+        return  false;
+    }
+
+    public function hasRole ($role) {
+        if ($this->roles()->where('nom_role', $role)->first()) {
+            return true;
+        }
+        return  false;
+    }
 }

@@ -44,10 +44,11 @@
 <li class="{{ Request::is('projets*') ? 'active' : '' }}">
     <a href="{{ route('projets.index') }}"><i class="fa fa-edit"></i><span>Projets</span></a>
 </li>
-
+<!--
 <li class="{{ Request::is('projetUsers*') ? 'active' : '' }}">
     <a href="{{ route('projetUsers.index') }}"><i class="fa fa-edit"></i><span>Projet  Users</span></a>
 </li>
+-->
 
 <li class="{{ Request::is('contrats*') ? 'active' : '' }}">
     <a href="{{ route('contrats.index') }}"><i class="fa fa-edit"></i><span>Contrats</span></a>

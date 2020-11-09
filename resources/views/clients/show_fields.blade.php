@@ -34,6 +34,12 @@
     <p>{{ $client->site_web }}</p>
 </div>
 
+<!-- User Id Field -->
+<div class="form-group">
+    {!! Form::label('user_id', 'User Id:') !!}
+    <p>{{ $users->find($client->user_id)->nom }}</p>
+</div>
+
 <!-- Notes Field -->
 <div class="form-group">
     {!! Form::label('notes', 'Notes:') !!}

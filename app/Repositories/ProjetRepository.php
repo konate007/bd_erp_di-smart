@@ -21,7 +21,9 @@ class ProjetRepository extends BaseRepository
         'description',
         'client_id',
         'date_lancement',
-        'date_livraison'
+        'date_livraison',
+        'responsable',
+        'service_id'
     ];
 
     /**

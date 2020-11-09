@@ -26,5 +26,28 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
+
+    
+    public function authenticated(Request $request)
+    {
+        $input = $request->all();
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->role_id == 1) {
+                return redirect()->route('home');
+            }else{
+                return redirect()->route('espaceclients.index');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Email-Address And Password Are Wrong.');
+        }
+    }
+    
 }

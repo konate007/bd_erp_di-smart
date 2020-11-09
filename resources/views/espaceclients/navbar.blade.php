@@ -36,7 +36,7 @@
                     <a class="nav-link" href="{{ url('liste_projets') }}">Liste des Projets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('equipe_projet') }}">Equipe Projet</a>
+                    <a class="nav-link" href="{{ url('liste_contrats') }}">Equipe Projet</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('demande_form') }}">Soumettre une demande</a>

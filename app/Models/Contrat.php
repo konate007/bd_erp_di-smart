@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version September 3, 2020, 9:53 pm UTC
  *
- * @property integer $projet_user_id
+ * @property integer $projet_id
  * @property integer $planmaintenance_id
  * @property string $description
  * @property string|\Carbon\Carbon $date_debut
@@ -29,7 +29,7 @@ class Contrat extends Model
 
 
     public $fillable = [
-        'projet_user_id',
+        'projet_id',
         'planmaintenance_id',
         'description',
         'date_debut',
@@ -44,7 +44,7 @@ class Contrat extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'projet_user_id' => 'integer',
+        'projet_id' => 'integer',
         'planmaintenance_id' => 'integer',
         'description' => 'string',
         'date_debut' => 'datetime',
@@ -58,7 +58,7 @@ class Contrat extends Model
      * @var array
      */
     public static $rules = [
-        'projet_user_id' => 'required',
+        'projet_id' => 'required',
         'planmaintenance_id' => 'required',
         'date_debut' => 'required',
         'date_fin' => 'required',

@@ -18,12 +18,12 @@ class CreateDemandesTable extends Migration
             $table->increments('id');
             $table->string('objet',100)->nullable();
             $table->integer('departement_id')->unsigned()->nullable();
-            $table->integer('projet_user_id')->unsigned()->nullable();
+            $table->integer('projet_id')->unsigned()->nullable();
             $table->text('message')->nullable();
             $table->integer('niveau_importance_id')->unsigned()->nullable();
             $table->integer('type_demande_id')->unsigned()->nullable();
             $table->string('statut',5)->nullable();
-            $table->integer('responsable')->unsigned()->nullable();
+            $table->date('date_fermeture')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

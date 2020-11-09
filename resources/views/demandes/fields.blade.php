@@ -10,10 +10,10 @@
     {!! Form::select('departement_id',$departementItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
 </div>
 
-<!-- Projet User Id Field -->
+<!-- Projet Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-    {!! Form::select('projet_user_id',$projetItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
+    {!! Form::label('projet_id', 'Projet Id:') !!}
+    {!! Form::select('projet_id',$projetItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
 </div>
 
 <!-- Message Field -->
@@ -38,12 +38,6 @@
 <div class="form-group col-sm-6">
     {!! Form::label('statut', 'Statut:') !!}
     {!! Form::select('statut',['OPEN','INPRO','CLOSE','STAND'], null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
-</div>
-
-<!-- Responsable Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('responsable', 'Responsable:') !!}
-    {!! Form::select('responsable', $responsableItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
 </div>
 
 <!-- Date fermeture Field -->

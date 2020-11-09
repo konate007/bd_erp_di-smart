@@ -1,7 +1,7 @@
-<!-- Projet User Id Field -->
+<!-- Projet Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-    {!! Form::select('projet_user_id', $projetItems, null, ['class' => 'form-control', 'placeholder'=> 'Please select']) !!}
+    {!! Form::label('projet_id', 'Projet Id:') !!}
+    {!! Form::select('projet_id',$projetItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
 </div>
 
 <!-- Planmaintenance Id Field -->

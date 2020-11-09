@@ -17,7 +17,7 @@ class ContratRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'projet_user_id',
+        'projet_id',
         'planmaintenance_id',
         'description',
         'date_debut',

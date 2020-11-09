@@ -14,6 +14,7 @@ $factory->define(Client::class, function (Faker $faker) {
         'telephone2' => $faker->randomDigitNotNull,
         'email' => $faker->word,
         'site_web' => $faker->word,
+        'user_id' => $faker->randomDigitNotNull,
         'notes' => $faker->text,
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s')

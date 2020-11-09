@@ -21,6 +21,8 @@ class CreateProjetsTable extends Migration
             $table->integer('client_id')->unsigned()->nullable();
             $table->date('date_lancement')->nullable();
             $table->date('date_livraison')->nullable();
+            $table->integer('responsable')->unsigned()->nullable();
+            $table->integer('service_id')->unsigned()->nullable();
             $table->integer('user_created')->unsigned()->nullable();
             $table->integer('user_modified')->unsigned()->nullable();
             $table->timestamps();

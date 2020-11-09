@@ -8,6 +8,7 @@ use App\Repositories\ProjetRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\User;
 use App\Models\Service;
 use Flash;
 use Response;
@@ -33,9 +34,10 @@ class ProjetController extends AppBaseController
     {
         $projets = $this->projetRepository->all();
         $clients = Client::all() ;
+        $users = User::all() ;
         $services = Service::all() ;
 
-        return view('projets.index', compact(['clients','services']))
+        return view('projets.index', compact(['clients','services','users']))
             ->with('projets', $projets);
     }
 
@@ -59,12 +61,13 @@ class ProjetController extends AppBaseController
     public function store(CreateProjetRequest $request)
     {
         $input = $request->all();
+        $users = User::all() ;
 
         $projet = $this->projetRepository->create($input);
 
         Flash::success('Projet saved successfully.');
 
-        return redirect(route('projets.index'));
+        return redirect(route('projets.index',compact(['users'])));
     }
 
     /**
@@ -83,8 +86,9 @@ class ProjetController extends AppBaseController
 
             return redirect(route('projets.index'));
         }
+        $users = User::all() ;
 
-        return view('projets.show')->with('projet', $projet);
+        return view('projets.show',compact(['users']))->with('projet', $projet);
     }
 
     /**
@@ -97,6 +101,7 @@ class ProjetController extends AppBaseController
     public function edit($id)
     {
         $projet = $this->projetRepository->find($id);
+        $users = User::all() ;
 
         if (empty($projet)) {
             Flash::error('Projet not found');
@@ -104,7 +109,7 @@ class ProjetController extends AppBaseController
             return redirect(route('projets.index'));
         }
 
-        return view('projets.edit')->with('projet', $projet);
+        return view('projets.edit',compact(['users']))->with('projet', $projet);
     }
 
     /**

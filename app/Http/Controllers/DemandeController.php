@@ -69,8 +69,8 @@ class DemandeController extends AppBaseController
      */
     public function create()
     {
-
-        return view('demandes.create');
+        $projets = Projet::all() ;
+        return view('demandes.create',compact(['projets']));
     }
 
     /**
@@ -85,6 +85,7 @@ class DemandeController extends AppBaseController
         $status = array('OPEN','INPRO','CLOSE','STAND');
         $request->merge(['statut' => $status[$request->statut]]);
         $input = $request->all();
+        $projets = Projet::all() ;
 
         $demande = $this->demandeRepository->create($input);
         
@@ -100,7 +101,7 @@ class DemandeController extends AppBaseController
         Flash::success('Demande saved successfully.');
 
 
-        return redirect(route('demandes.index'));
+        return redirect(route('demandes.index',compact(['projets'])));
     }
 
     /**
@@ -144,6 +145,7 @@ class DemandeController extends AppBaseController
     {
         
         $demande = $this->demandeRepository->find($id);
+        $projets = Projet::all() ;
 
         if (empty($demande)) {
             Flash::error('Demande not found');
@@ -151,7 +153,7 @@ class DemandeController extends AppBaseController
             return redirect(route('demandes.index'));
         }
 
-        return view('demandes.edit')->with('demande', $demande);
+        return view('demandes.edit',compact(['projets']))->with('demande', $demande);
     }
 
     /**

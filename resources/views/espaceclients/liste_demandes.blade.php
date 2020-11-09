@@ -8,12 +8,11 @@
                 <tr>
                     <th>Objet</th>
                     <th>Departement Id</th>
-                    <th>Projet User Id</th>
+                    <th>Projet Id</th>
                     <th>Message</th>
                     <th>Niveau Importance Id</th>
                     <th>Type Demande Id</th>
                     <th>Statut</th>
-                    <th>Responsable</th>
                     <th>Date fermeture</th>
                 </tr>
                 </thead>
@@ -29,7 +28,7 @@
                         @endforeach
 
                         @foreach($projets as $projet)
-                            @if($demande->projet_user_id == $projet->id)
+                            @if($demande->projet_id == $projet->id)
                                 <td>{{ $projet->nom_projet }}</td>
                             @endif
                         @endforeach
@@ -56,11 +55,6 @@
                             <td>SUSPE</td>
                         @endif
 
-                        @foreach($users as $user)
-                            @if($demande->responsable == $user->id)
-                                <td>{{ $user->nom }}</td>
-                            @endif
-                        @endforeach
                         <td>{{ $demande->date_fermeture->toDateString() }}</td>
                     </tr>
                 @endforeach

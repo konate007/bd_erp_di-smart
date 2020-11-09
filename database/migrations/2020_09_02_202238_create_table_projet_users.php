@@ -17,6 +17,8 @@ class CreateTableProjetUsers extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('projet_id')->unsigned()->nullable();
+            $table->integer('user_created')->unsigned()->nullable();
+            $table->integer('user_modified')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
