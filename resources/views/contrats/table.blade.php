@@ -25,11 +25,11 @@
                 <td>{{ $contrat->date_debut->toDateString() }}</td>
                 <td>{{ $contrat->date_fin->toDateString() }}</td>
                 @if ($contrat->statut == 0)
-                     <td>ENCOU</td>
+                     <td>En cours</td>
                 @elseif ($contrat->statut == 1)
-                     <td>EXPIR</td>
+                     <td>Expiré</td>
                 @else
-                     <td>SUSPE</td>
+                     <td>Suspendu</td>
                 @endif
                 <td>
                     {!! Form::open(['route' => ['contrats.destroy', $contrat->id], 'method' => 'delete']) !!}

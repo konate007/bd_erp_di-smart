@@ -8,25 +8,24 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item {{ Request::is('planmaintenances*') ? 'active' : '' }}">
-                <a href="{{ route('planmaintenances.index') }}"><i class="fa fa-map-marker"></i><span>Plans de maintenance</span></a>
-              </li>
-              <li class="nav-item {{ Request::is('departements*') ? 'active' : '' }}">
-                <a href="{{ route('departements.index') }}"><i class="fa fa-building"></i><span>Departements</span></a>
-              </li>
-              <li class="nav-item {{ Request::is('niveauImportances*') ? 'active' : '' }}">
-                <a href="{{ route('niveauImportances.index') }}"><i class="fas fa-level-up-alt"></i><span>Niveaux  d'importance</span></a>
-              </li>
-              <li class="nav-item {{ Request::is('typeDemandes*') ? 'active' : '' }}">
-                <a href="{{ route('typeDemandes.index') }}"><i class="fa fa-sort"></i><span>Type  Demandes</span></a>
-              </li>
-              <li class=" nav-item {{ Request::is('roles*') ? 'active' : '' }}">
-                 <a href="{{ route('roles.index') }}"><i class="fa fa-tasks"></i><span>Roles</span></a>
-              </li>
-              <li class="nav-item {{ Request::is('services*') ? 'active' : '' }}">
-                <a href="{{ route('services.index') }}"><i class="fa-services"></i><span>Services</span></a>
-              </li>
-              
+                <li class="nav-item {{ Request::is('planmaintenances*') ? 'active' : '' }}">
+                  <a href="{{ route('planmaintenances.index') }}"><i class="fa fa-map-marker"></i><span>Plans de maintenance</span></a>
+                </li>
+                <li class="nav-item {{ Request::is('departements*') ? 'active' : '' }}">
+                  <a href="{{ route('departements.index') }}"><i class="fa fa-building"></i><span>Departements</span></a>
+                </li>
+                <li class="nav-item {{ Request::is('niveauImportances*') ? 'active' : '' }}">
+                  <a href="{{ route('niveauImportances.index') }}"><i class="fas fa-level-up-alt"></i><span>Niveaux  d'importance</span></a>
+                </li>
+                <li class="nav-item {{ Request::is('typeDemandes*') ? 'active' : '' }}">
+                  <a href="{{ route('typeDemandes.index') }}"><i class="fa fa-sort"></i><span>Type  Demandes</span></a>
+                </li>
+                <li class=" nav-item {{ Request::is('roles*') ? 'active' : '' }}">
+                  <a href="{{ route('roles.index') }}"><i class="fa fa-tasks"></i><span>Roles</span></a>
+                </li>
+                <li class="nav-item {{ Request::is('services*') ? 'active' : '' }}">
+                  <a href="{{ route('services.index') }}"><i class="fa fa-cog"></i><span>Services</span></a>
+                </li>
             </ul>
     </li>
 </ul>

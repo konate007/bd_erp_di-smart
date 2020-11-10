@@ -12,7 +12,7 @@
 
 <!-- Client Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('client_id', 'Client Id:') !!}
+    {!! Form::label('client_id', 'Client:') !!}
     {!! Form::select('client_id', $clientItems, null, ['class' => 'form-control']) !!}
 </div>
 
@@ -36,7 +36,7 @@
 
 <!-- Service Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('service_id', 'Service Id:') !!}
+    {!! Form::label('service_id', 'Service:') !!}
     {!! Form::select('service_id', $serviceItems, null, ['class' => 'form-control','placeholder'=> 'Please select']) !!}
 </div>
 

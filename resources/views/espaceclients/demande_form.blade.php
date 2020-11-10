@@ -12,14 +12,14 @@
 
     <!-- Departement Id Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('departement_id', 'Departement Id:') !!}
+        {!! Form::label('departement_id', 'Departement:') !!}
         {!! Form::select('departement_id',$departementItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
     </div>
 
     <!-- Projet User Id Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('projet_user_id', 'Projet User Id:') !!}
-        {!! Form::select('projet_user_id',$projetItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
+        {!! Form::label('projet_id', 'Projet:') !!}
+        {!! Form::select('projet_id',$projetItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
     </div>
 
     <!-- Message Field -->
@@ -30,13 +30,13 @@
 
     <!-- Niveau Importance Id Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('niveau_importance_id', 'Niveau Importance Id:') !!}
+        {!! Form::label('niveau_importance_id', 'Niveau Importance:') !!}
         {!! Form::select('niveau_importance_id', $niveau_importanceItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
     </div>
 
     <!-- Type Demande Id Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('type_demande_id', 'Type Demande Id:') !!}
+        {!! Form::label('type_demande_id', 'Type Demande:') !!}
         {!! Form::select('type_demande_id',$type_demandeItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
     </div>
 

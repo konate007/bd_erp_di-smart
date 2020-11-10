@@ -114,6 +114,8 @@ class EspaceclientController extends Controller
     public function listeContrat (Request $request)
     {
 
+        return "Bonjour" ;
+
         $user = User::where('id', auth()->user()->id)->first();
         $contrats = Projet_User::where('user_id', $user->id)->get();
 

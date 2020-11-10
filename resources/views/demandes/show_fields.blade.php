@@ -1,20 +1,18 @@
 <!-- Objet Field -->
-<!--
 <div class="form-group">
     {!! Form::label('objet', 'Objet:') !!}
     <p>{{ $demande->objet  }}</p>
 </div>
--->
 
 <!-- Departement Id Field -->
 <div class="form-group">
-    {!! Form::label('departement_id', 'Departement Id:') !!}
+    {!! Form::label('departement_id', 'Departement:') !!}
     <p>{{$departements->find($demande->departement_id)->nom_departement}}</p>
 </div>
 
 <!-- Projet Id Field -->
 <div class="form-group">
-    {!! Form::label('projet_id', 'Projet Id:') !!}
+    {!! Form::label('projet_id', 'Projet:') !!}
     <p>{{ $projets->find($demande->projet_id)->nom_projet }}</p>
 </div>
 
@@ -26,13 +24,13 @@
 
 <!-- Niveau Importance Id Field -->
 <div class="form-group">
-    {!! Form::label('niveau_importance_id', 'Niveau Importance Id:') !!}
+    {!! Form::label('niveau_importance_id', 'Niveau Importance:') !!}
     <p>{{$niveau_importances->find($demande->niveau_importance_id)->niveau }}</p>
 </div>
 
 <!-- Type Demande Id Field -->
 <div class="form-group">
-    {!! Form::label('type_demande_id', 'Type Demande Id:') !!}
+    {!! Form::label('type_demande_id', 'Type Demande:') !!}
     <p>{{$type_demandes->find($demande->type_demande_id)->type }}</p>
 </div>
 

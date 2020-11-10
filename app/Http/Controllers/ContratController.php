@@ -61,7 +61,7 @@ class ContratController extends AppBaseController
      */
     public function store(CreateContratRequest $request)
     {
-        $status = array('ENCOU', 'EXPIR','SUSPE');
+        $status = array('En cours', 'Expiré','Suspendu');
         $request->merge(['statut' => $status[$request->statut]]);
         $input = $request->all();
         $projets = Projet::all() ;
@@ -128,7 +128,7 @@ class ContratController extends AppBaseController
     public function update($id, UpdateContratRequest $request)
     {
         $contrat = $this->contratRepository->find($id);
-        $status = array('ENCOU', 'EXPIR','SUSPE');
+        $status = array('En cours', 'Expiré','Suspendu');
 
         if (empty($contrat)) {
             Flash::error('Contrat not found');

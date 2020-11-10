@@ -7,11 +7,11 @@
                 <thead class="thead-dark">
                 <tr>
                     <th>Objet</th>
-                    <th>Departement Id</th>
-                    <th>Projet Id</th>
+                    <th>Departement</th>
+                    <th>Projet</th>
                     <th>Message</th>
-                    <th>Niveau Importance Id</th>
-                    <th>Type Demande Id</th>
+                    <th>Niveau Importance</th>
+                    <th>Type Demande</th>
                     <th>Statut</th>
                     <th>Date fermeture</th>
                 </tr>

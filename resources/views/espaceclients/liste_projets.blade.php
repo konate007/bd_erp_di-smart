@@ -10,7 +10,7 @@
                 <th>Client Id</th>
                 <th>Date Lancement</th>
                 <th>Date Livraison</th>
-                <th>Service Id</th>
+                <th>Service</th>
             </tr>
             </thead>
             <tbody>

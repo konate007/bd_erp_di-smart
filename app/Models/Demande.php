@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version September 2, 2020, 10:04 pm UTC
  *
+ * @property integer $objet
  * @property integer $departement_id
  * @property integer $projet_id
  * @property string $message
@@ -32,6 +33,7 @@ class Demande extends Model
 
 
     public $fillable = [
+        'objet',
         'departement_id',
         'projet_id',
         'message',
@@ -48,6 +50,7 @@ class Demande extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'objet' => 'string',
         'departement_id' => 'integer',
         'projet_id' => 'integer',
         'message' => 'string',
@@ -63,6 +66,7 @@ class Demande extends Model
      * @var array
      */
     public static $rules = [
+        'objet' => 'required',
         'departement_id' => 'required',
         'projet_id' => 'required',
         'message' => 'required',

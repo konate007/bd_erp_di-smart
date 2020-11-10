@@ -36,7 +36,7 @@
 
 <!-- Service Id Field -->
 <div class="form-group">
-    {!! Form::label('service_id', 'Service Id:') !!}
+    {!! Form::label('service_id', 'Service:') !!}
     <p>{{ $projet->service_id }}</p>
 </div>
 

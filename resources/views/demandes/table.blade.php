@@ -2,6 +2,7 @@
     <table class="table" id="demandes-table">
         <thead>
             <tr>
+                <th>Objet</th>
                 <th>Departement</th>
                 <th>Projet </th>
                 <th>Message</th>
@@ -15,6 +16,7 @@
         <tbody>
         @foreach($demandes as $demande)
             <tr>
+                <td>{{$demande->objet}}</td>
                 @foreach($departements as $departement)
                     @if($demande->departement_id == $departement->id)
                     <td>{{ $departement->nom_departement }}</td>

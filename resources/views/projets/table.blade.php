@@ -4,7 +4,7 @@
             <tr>
                 <th>Nom Projet</th>
                 <th>Description</th>
-                <th>Client Id</th>
+                <th>Client</th>
                 <th>Date Lancement</th>
                 <th>Date Livraison</th>
                 <th>Responsable</th>
