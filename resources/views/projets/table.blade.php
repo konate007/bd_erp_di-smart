@@ -8,8 +8,8 @@
                 <th>Date Lancement</th>
                 <th>Date Livraison</th>
                 <th>Responsable</th>
-                <th>Service Id</th>
-                <th colspan="3">Action</th>
+                <th>Service</th>
+                <th colspan="3">Actions</th>
             </tr>
         </thead>
         <tbody>

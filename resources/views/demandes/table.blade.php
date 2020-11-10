@@ -2,21 +2,19 @@
     <table class="table" id="demandes-table">
         <thead>
             <tr>
-                <th>Objet</th>
-                <th>Departement Id</th>
-                <th>Projet Id</th>
+                <th>Departement</th>
+                <th>Projet </th>
                 <th>Message</th>
-                <th>Niveau Importance Id</th>
-                <th>Type Demande Id</th>
+                <th>Niveau Importance</th>
+                <th>Type Demande</th>
                 <th>Statut</th>
                 <th>Date fermeture</th>
-                <th colspan="3">Action</th>
+                <th colspan="3">Actions</th>
             </tr>
         </thead>
         <tbody>
         @foreach($demandes as $demande)
             <tr>
-                <td>{{ $demande->objet }}</td>
                 @foreach($departements as $departement)
                     @if($demande->departement_id == $departement->id)
                     <td>{{ $departement->nom_departement }}</td>
@@ -36,17 +34,7 @@
                        <td>{{ $type_demande->type }}</td>
                     @endif
                 @endforeach
-                @if ($demande->statut == 0)
-                     <td>OPEN</td>
-                @endif
-                @if ($demande->statut ==1)
-                     <td>INPRO</td>
-                @elseif ($demande->statut == 2)
-                     <td>CLOSE</td>
-                @else
-                     <td>STAND</td>
-                @endif
-                
+                <td>{{$demande->statut}}</td>
                 <td>{{ $demande->date_fermeture->toDateString() }}</td>
                 <td>
                     {!! Form::open(['route' => ['demandes.destroy', $demande->id], 'method' => 'delete']) !!}

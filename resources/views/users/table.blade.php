@@ -2,13 +2,13 @@
     <table class="table" id="users-table">
         <thead>
             <tr>
-                <th>Prenom</th>
+                <th>Prénoms</th>
         <th>Nom</th>
         <th>Email</th>
         <!-- <th>Password</th> -->
         <th>Fonction</th>
         <th>Role Id</th>
-                <th colspan="3">Action</th>
+                <th colspan="3">Actions</th>
             </tr>
         </thead>
         <tbody>

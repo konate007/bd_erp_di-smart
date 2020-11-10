@@ -2,13 +2,13 @@
     <table class="table" id="contrats-table">
         <thead>
             <tr>
-                <th>Projet Id</th>
-        <th>Planmaintenance Id</th>
+                <th>Projet</th>
+        <th>Plans de maintenance</th>
         <th>Description</th>
         <th>Date Debut</th>
         <th>Date Fin</th>
         <th>Statut</th>
-                <th colspan="3">Action</th>
+                <th colspan="3">Actions</th>
             </tr>
         </thead>
         <tbody>

@@ -80,7 +80,8 @@ class EspaceclientController extends Controller
     }
 
 
-    public function listeDemande (Request $request) {
+    public function listeDemande (Request $request)
+    {
         
         $client = Client::where('user_id', Auth::user()->id)->first();
         $projet = Projet::where('client_id', $client->id)->first();
@@ -110,7 +111,8 @@ class EspaceclientController extends Controller
             ->with('projets', $projets);
     }
 
-    public function listeContrat (Request $request) {
+    public function listeContrat (Request $request)
+    {
 
         $user = User::where('id', auth()->user()->id)->first();
         $contrats = Projet_User::where('user_id', $user->id)->get();

@@ -82,15 +82,15 @@ class DemandeController extends AppBaseController
      */
     public function store(CreateDemandeRequest $request)
     {
-        $status = array('OPEN','INPRO','CLOSE','STAND');
+        $status = array('Ouverte','En cours','Fermée','En suspens');
         $request->merge(['statut' => $status[$request->statut]]);
-        $input = $request->all();
+        $input = $request->all() ;
         $projets = Projet::all() ;
 
         $demande = $this->demandeRepository->create($input);
         
         $users = User::all();
-        self::$id_projet = Demande::find($demande->id)->projet_user_id ;
+        self::$id_projet = Demande::find($demande->id)->projet_id ;
         self::$id_demande = $demande->id ;
        
         foreach($users as $user)
@@ -167,7 +167,7 @@ class DemandeController extends AppBaseController
     public function update($id, UpdateDemandeRequest $request)
     {
         $demande = $this->demandeRepository->find($id);
-        $status = array('OPEN','INPRO','CLOSE','STAND');
+        $status = array('Ouverte','En cours','Fermée','En suspens');
         $request->merge(['statut' => $status[$request->statut]]);
 
         if (empty($demande)) {
@@ -178,7 +178,7 @@ class DemandeController extends AppBaseController
 
         $demande = $this->demandeRepository->update($request->all(), $id);
         
-        self::setIdentifiant(Demande::find($id)->projet_user_id) ;
+        self::setIdentifiant(Demande::find($id)->projet_id) ;
         self::$id = $id ;
         $users = User::all();
         

@@ -8,9 +8,9 @@
         <th>Telephone2</th>
         <th>Email</th>
         <th>Site Web</th>
-        <th>User id</th>
+        <th>Utilisateur</th>
         <th>Notes</th>
-                <th colspan="3">Action</th>
+                <th colspan="3">Actions</th>
             </tr>
         </thead>
         <tbody>

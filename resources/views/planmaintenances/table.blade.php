@@ -3,9 +3,9 @@
         <thead>
             <tr>
                 <th>Titre</th>
-        <th>Service Id</th>
+        <th>Service </th>
         <th>Description</th>
-                <th colspan="3">Action</th>
+                <th colspan="3">Actions</th>
             </tr>
         </thead>
         <tbody>

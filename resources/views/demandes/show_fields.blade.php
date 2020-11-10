@@ -1,8 +1,10 @@
 <!-- Objet Field -->
+<!--
 <div class="form-group">
     {!! Form::label('objet', 'Objet:') !!}
     <p>{{ $demande->objet  }}</p>
 </div>
+-->
 
 <!-- Departement Id Field -->
 <div class="form-group">
@@ -37,17 +39,7 @@
 <!-- Statut Field -->
 <div class="form-group">
     {!! Form::label('statut', 'Statut:') !!}
-    @if ($demande->statut == 0)
-        <p>OPEN</p>
-    @endif
-    @if ($demande->statut ==1)
-        <p>INPRO</p>
-    @elseif ($demande->statut == 2)
-        <p>CLOSE</p>
-    @else
-        <p>STAND</p>
-    @endif
-    
+    <p>{{$demande->statut}}</p>
 </div>
 
 <!-- Date fermeture Field -->

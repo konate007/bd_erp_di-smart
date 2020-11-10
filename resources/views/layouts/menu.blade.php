@@ -9,40 +9,40 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item {{ Request::is('planmaintenances*') ? 'active' : '' }}">
-                <a href="{{ route('planmaintenances.index') }}"><i class="far fa-circle nav-icon"></i><span>Plans de maintenance</span></a>
+                <a href="{{ route('planmaintenances.index') }}"><i class="fa fa-map-marker"></i><span>Plans de maintenance</span></a>
               </li>
               <li class="nav-item {{ Request::is('departements*') ? 'active' : '' }}">
-                <a href="{{ route('departements.index') }}"><i class="far fa-circle nav-icon"></i><span>Departements</span></a>
+                <a href="{{ route('departements.index') }}"><i class="fa fa-building"></i><span>Departements</span></a>
               </li>
               <li class="nav-item {{ Request::is('niveauImportances*') ? 'active' : '' }}">
-                <a href="{{ route('niveauImportances.index') }}"><i class="far fa-circle nav-icon"></i><span>Niveaux  d'importance</span></a>
+                <a href="{{ route('niveauImportances.index') }}"><i class="fas fa-level-up-alt"></i><span>Niveaux  d'importance</span></a>
               </li>
               <li class="nav-item {{ Request::is('typeDemandes*') ? 'active' : '' }}">
-                <a href="{{ route('typeDemandes.index') }}"><i class="far fa-circle nav-icon"></i><span>Type  Demandes</span></a>
+                <a href="{{ route('typeDemandes.index') }}"><i class="fa fa-sort"></i><span>Type  Demandes</span></a>
               </li>
               <li class=" nav-item {{ Request::is('roles*') ? 'active' : '' }}">
-                 <a href="{{ route('roles.index') }}"><i class="far fa-circle nav-icon"></i><span>Roles</span></a>
+                 <a href="{{ route('roles.index') }}"><i class="fa fa-tasks"></i><span>Roles</span></a>
               </li>
               <li class="nav-item {{ Request::is('services*') ? 'active' : '' }}">
-                <a href="{{ route('services.index') }}"><i class="far fa-circle nav-icon"></i><span>Services</span></a>
+                <a href="{{ route('services.index') }}"><i class="fa-services"></i><span>Services</span></a>
               </li>
               
             </ul>
     </li>
 </ul>
 <li class="{{ Request::is('dashboard*') ? 'active' : '' }}">
-    <a href="{{ route('dashboard.index') }}"><i class="fa fa-edit"></i><span>Tableau de bord</span></a>
+    <a href="{{ route('dashboard.index') }}"><i class="fa fa-table"></i><span>Tableau de bord</span></a>
 </li>
 <li class="{{ Request::is('users*') ? 'active' : '' }}">
-    <a href="{{ route('users.index') }}"><i class="fa fa-edit"></i><span>Users</span></a>
+    <a href="{{ route('users.index') }}"><i class="fa fa-user"></i><span>Users</span></a>
 </li>
 
 <li class="{{ Request::is('clients*') ? 'active' : '' }}">
-    <a href="{{ route('clients.index') }}"><i class="fa fa-edit"></i><span>Clients</span></a>
+    <a href="{{ route('clients.index') }}"><i class="fa fa-user-circle"></i><span>Clients</span></a>
 </li>
 
 <li class="{{ Request::is('projets*') ? 'active' : '' }}">
-    <a href="{{ route('projets.index') }}"><i class="fa fa-edit"></i><span>Projets</span></a>
+    <a href="{{ route('projets.index') }}"><i class="fas fa-project-diagram"></i><span>Projets</span></a>
 </li>
 <!--
 <li class="{{ Request::is('projetUsers*') ? 'active' : '' }}">
@@ -51,10 +51,10 @@
 -->
 
 <li class="{{ Request::is('contrats*') ? 'active' : '' }}">
-    <a href="{{ route('contrats.index') }}"><i class="fa fa-edit"></i><span>Contrats</span></a>
+    <a href="{{ route('contrats.index') }}"><i class="fas fa-file-contract"></i><span>Contrats</span></a>
 </li>
 
 <li class="{{ Request::is('demandes*') ? 'active' : '' }}">
-    <a href="{{ route('demandes.index') }}"><i class="fa fa-edit"></i><span>Demandes</span></a>
+    <a href="{{ route('demandes.index') }}"><i class="fa fa-reply"></i><span>Demandes</span></a>
 </li>
 
