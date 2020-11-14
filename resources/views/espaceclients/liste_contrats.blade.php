@@ -1,23 +1,33 @@
 @extends('espaceclients.navbar')
 
 @section('contenu')
-    @foreach($equipeprojets as $equipe)
-    <div class="card" style="width: 18rem;">
-        <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-            <div class="card-body">
-                @foreach($projets as $projet)
-                    @if($equipe->projet_id == $projet->id)
-                <h4 class="card-title">{{ $projet->nom_projet }}</h4>
-                    @endif
-                @endforeach
-                @foreach($users as $user)
-                    @if($equipe->user_id == $user->id)
-                        <p class="card-text">{{ $user->prenom}} {{ $user->nom}} </p>
-                    @endif
-                @endforeach
-            </div>
-        </div>
-    </div>
-    @endforeach
-@endsection
+    <div class="table-responsive">
+        <table class="table" id="projets-table">
+            <thead class="thead-dark">
+            <tr>
+                <th>Projet</th>
+                <th>Plans de maintenance</th>
+                <th>Description</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Statut</th>
+                <th>Action</th>
 
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($contrats as $contrat)
+                <tr>
+                    <td>{{ $projets->find($contrat->projet_id)->nom_projet }}</td>
+                    <td>{{ $planmaintenances->find($contrat->planmaintenance_id )->titre }}</td>
+                    <td>{{ $contrat->description }}</td>
+                    <td>{{ $contrat->date_debut }}</td>
+                    <td>{{ $contrat->date_fin }}</td>
+                    <td>{{ $contrat->statut }}</td>
+                    <td><a class="btn btn-warning" href="{{ url('/download/'.$contrat->id) }}">Download PDF</a></td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection

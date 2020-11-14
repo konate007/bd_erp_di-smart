@@ -7,10 +7,10 @@
             <tr>
                 <th>Nom Projet</th>
                 <th>Description</th>
-                <th>Client Id</th>
                 <th>Date Lancement</th>
                 <th>Date Livraison</th>
-                <th>Service</th>
+                <!--<th>Action</th>-->
+
             </tr>
             </thead>
             <tbody>
@@ -18,14 +18,10 @@
                 <tr>
                     <td>{{ $projet->nom_projet }}</td>
                     <td>{{ $projet->description }}</td>
-                    <td>{{ $clients->find($projet->client_id)->nom_client }}</td>
                     <td>{{ $projet->date_lancement }}</td>
                     <td>{{ $projet->date_livraison }}</td>
-                    @foreach($services as $service)
-                        @if($projet->service_id == $service->id)
-                            <td>{{ $service->nom_service }}</td>
-                        @endif
-                    @endforeach
+                    <!--<td><a class="btn btn-warning" href="{{ url('/download/'.$projet->id) }}">Download PDF</a></td>-->
+                </tr>
             @endforeach
             </tbody>
         </table>

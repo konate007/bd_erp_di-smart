@@ -58,6 +58,9 @@ Route::get('liste_contrats', 'EspaceClientController@listeContrat')->name('liste
 Route::get('liste_projets', 'EspaceClientController@listeProjet')->name('liste_projets');
 Route::get('demande_form', 'EspaceClientController@demandeForm')->name('demande_form');
 Route::any('soumission', 'EspaceClientController@registration')->name('soumission');
+Route::get('/download/{id}', 'PdfController@pdfview')->name('download');
+//Route::get('liste_projets', 'EspaceClientController@pdfview')->name('liste_projets');
+
 
 
 // Le Profil

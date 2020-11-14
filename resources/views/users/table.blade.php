@@ -7,7 +7,7 @@
         <th>Email</th>
         <!-- <th>Password</th> -->
         <th>Fonction</th>
-        <th>Role Id</th>
+        <th>Role</th>
                 <th colspan="3">Actions</th>
             </tr>
         </thead>

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Flash;
+use PDF;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Contrat;
 use App\Models\Demande;
 use App\Models\Departement;
+use App\Models\Planmaintenance;
 use App\Models\Niveau_Importance;
 use App\Models\Projet;
 use App\Models\Projet_User;
@@ -85,7 +87,8 @@ class EspaceclientController extends Controller
         
         $client = Client::where('user_id', Auth::user()->id)->first();
         $projet = Projet::where('client_id', $client->id)->first();
-        $demandes = Demande::where('projet_id', $projet->id)->get();
+        $demandes = Demande::where('projet_id', $projet->id)->paginate(1);
+        //$demandes = Demande::paginate(2) ;
 
         $departements = Departement::all();
         $niveau_importances = Niveau_Importance::all();
@@ -100,30 +103,25 @@ class EspaceclientController extends Controller
 
     public function listeProjet (Request $request)
     {
-
-        $client = Client::where('user_id', Auth::user()->id)->first();
-        $projets = Projet::where('client_id', $client->id)->get();
-
-        $clients = Client::all();
-        $services = Service::all();
-
-        return view('espaceclients.liste_projets',compact(['clients', 'services']))
-            ->with('projets', $projets);
+        $client = Client::where('user_id', Auth::user()->id)->first() ;
+        $projets = Projet::where('client_id', $client->id)->get() ;
+        //$projets = Projet::all() ;
+        return view('espaceclients.liste_projets', compact(['projets']));
     }
 
     public function listeContrat (Request $request)
     {
 
-        return "Bonjour" ;
+            $client = Client::where('user_id', Auth::user()->id)->first() ;
+            $projet = Projet::where('client_id', $client->id)->first() ;
+            $contrats = Contrat::where('projet_id', $projet->id)->get();
+            $projets = Projet::all() ;
+            $planmaintenances = Planmaintenance::all() ;
 
-        $user = User::where('id', auth()->user()->id)->first();
-        $contrats = Projet_User::where('user_id', $user->id)->get();
-
-        $projets = Projet::all();
-        $users = User::all();
-
-        return view('espaceclients.liste_contrats',compact(['user', 'projets', 'users']))
-            ->with('equipeprojets', $equipeprojets);
+            return view('espaceclients.liste_contrats', compact(['contrats','projets','planmaintenances']));
+        
     }
 
+
+    
 }

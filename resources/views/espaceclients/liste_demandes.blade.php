@@ -60,6 +60,7 @@
                 @endforeach
                 </tbody>
             </table>
+            {{$demandes->links()}}
         @else
             @section('contenu')
             <main class="py-4">

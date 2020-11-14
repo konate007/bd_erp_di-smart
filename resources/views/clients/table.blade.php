@@ -8,7 +8,7 @@
         <th>Telephone2</th>
         <th>Email</th>
         <th>Site Web</th>
-        <th>Utilisateur</th>
+        <th>User</th>
         <th>Notes</th>
                 <th colspan="3">Actions</th>
             </tr>
