@@ -8,6 +8,8 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DemandeController ;
+use App\Http\Controllers\EspaceClientController ;
+
 use App\Models\Projet;
 
 class AddDemandeNotification extends Notification
@@ -43,14 +45,24 @@ class AddDemandeNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $projet_id = DemandeController::$id_projet ;
-        $demande_id = DemandeController::$id_demande ;
 
-        $nom_projet = Projet::find($projet_id)->nom_projet ;
+        if(Auth::user()->role_id == 1)
+        {
+            $projet_id = DemandeController::$id_projet ;
+            $demande_id = DemandeController::$id_demande ;
+            $nom_projet = Projet::find($projet_id)->nom_projet ;
+        }else{
+
+            $projet_id = EspaceClientController::$id_projet ;
+            $demande_id = EspaceClientController::$id_demande ;
+            $nom_projet = Projet::find($projet_id + 1)->nom_projet ;
+        }
+
+        
         return (new MailMessage)
                     ->line(' Nouvelle demande crée pour le projet : ' .$nom_projet)
                     ->action('Show Détails', url('/demandes/'.$demande_id))
-                    ->line('Thank you for using our application!');
+                    ->line('Thank you for using our application !');
     }
 
     /**

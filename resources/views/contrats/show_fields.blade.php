@@ -31,13 +31,7 @@
 <!-- Statut Field -->
 <div class="form-group">
     {!! Form::label('statut', 'Statut:') !!}
-    @if ($contrat->statut == 0)
-        <p>En cours</p>
-    @elseif ($contrat->statut == 1)
-        <p>Expiré</p>
-    @else
-        <p>Suspendu</p>
-    @endif
+    <p>{{$contrat->statut}}</p>
 </div>
 
 <!-- Created At Field -->

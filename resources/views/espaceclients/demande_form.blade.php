@@ -43,14 +43,16 @@
     <!-- Statut Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('statut', 'Statut:') !!}
-        {!! Form::select('statut',['OPEN','INPRO','CLOSE','STAND'], null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
+        {!! Form::select('statut',['Ouverte','En cours','Fermée','En suspens'], null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
     </div>
 
     <!-- Responsable Field -->
+    <!--
     <div class="form-group col-sm-6">
         {!! Form::label('responsable', 'Responsable:') !!}
         {!! Form::select('responsable', $responsableItems, null, ['class' => 'form-control','placeholder'=>'Please select']) !!}
     </div>
+    -->
 
     <!-- Date fermeture Field -->
     <div class="form-group col-sm-6">

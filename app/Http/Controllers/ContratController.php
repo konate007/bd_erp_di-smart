@@ -128,7 +128,7 @@ class ContratController extends AppBaseController
     public function update($id, UpdateContratRequest $request)
     {
         $contrat = $this->contratRepository->find($id);
-        $status = array('En cours', 'Expiré','Suspendu');
+        $status = array('Ouvert','En cours','Fermé','En suspens');
 
         if (empty($contrat)) {
             Flash::error('Contrat not found');

@@ -32,7 +32,7 @@
 <!-- Statut Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('statut', 'Statut:') !!}
-    {!! Form::select('statut',['En cours', 'Expiré','Suspendu'], null, ['class' => 'form-control','placeholder'=> 'Please select']) !!}
+    {!! Form::select('statut',['Ouvert','En cours','Fermé','En suspens'], null, ['class' => 'form-control','placeholder'=> 'Please select']) !!}
 </div>
 
 <!-- Submit Field -->

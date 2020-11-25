@@ -25,7 +25,7 @@ class CreateProjetsTable extends Migration
             $table->integer('service_id')->unsigned()->nullable();
             $table->integer('user_created')->unsigned()->nullable();
             $table->integer('user_modified')->unsigned()->nullable();
-            $table->timestamps();
+            $table->timestamps();  
             $table->softDeletes();
         });
     }

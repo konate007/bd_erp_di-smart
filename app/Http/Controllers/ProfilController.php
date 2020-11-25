@@ -38,6 +38,7 @@ class ProfilController extends Controller
 
         return view('profils.editerprofil');
     }
+
     public function updateProfil (Request $request)
     {
         DB::table('users')->where('id', Auth::user()->id)->update(
@@ -50,8 +51,10 @@ class ProfilController extends Controller
             ]
         );
 
-        Flash::success('User updated successfully.');
 
-        return view('profils.editerprofil');
+        $users = User::where('id', Auth::user()->id)->get();
+
+        return view('profils.index', compact('users'));
+        //return redirect(route('profils.index'));
     }
 }

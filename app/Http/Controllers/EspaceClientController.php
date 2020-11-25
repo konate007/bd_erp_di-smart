@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Flash;
 use PDF;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\AddDemandeNotification;
 use App\Models\Contrat;
 use App\Models\Demande;
 use App\Models\Departement;
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\DB;
 
 class EspaceclientController extends Controller
 {
+    public static $id_demande ;
+    public static $id_projet ;
+
     public function index (Request $request) {
         return view('espaceclients.index');
     }
@@ -28,17 +32,17 @@ class EspaceclientController extends Controller
 
     public function registration(Request $request){
 
-        $tabUserIDs = User::pluck('id') ;
+        //$tabUserIDs = User::pluck('id') ;
         $tabProjetIDs = Projet::pluck('id') ;
         $tabDepartementIDs = Departement::pluck('id') ;
         $tabTypeDemandeIDs = Type_Demande::pluck('id') ;
-        $statuts = array('OPEN','INPRO','CLOSE','STAND') ;
+        $statuts = array('Ouverte','En cours','Fermée','En suspens') ;
         $tabNiveauImportanceIDs = Niveau_Importance::pluck('id') ;
         $objet = $request->objet ;
         $message = $request->message ;
         $date_fermeture = $request->date_fermeture ;
-        $projet_user_id = $tabProjetIDs[$request->projet_user_id] ;
-        $responsable = $tabUserIDs[$request->responsable] ;
+        $projet_id = $tabProjetIDs[$request->projet_id] ;
+        //$responsable = $tabUserIDs[$request->responsable] ;
         $departement_id = $tabDepartementIDs[$request->departement_id] ;
         $type_demande_id = $tabTypeDemandeIDs[$request->type_demande_id] ;
         $niveau_importance_id = $tabNiveauImportanceIDs[$request->niveau_importance_id] ;
@@ -48,16 +52,25 @@ class EspaceclientController extends Controller
             [
                 'objet' => $request->objet,
                 'departement_id' => $tabDepartementIDs[$request->departement_id] ,
-                'projet_user_id' => $tabProjetIDs[$request->projet_user_id],
+                'projet_id' => $tabProjetIDs[$request->projet_id],
                 'message' => $request->message,
                 'niveau_importance_id' => $tabNiveauImportanceIDs[$request->niveau_importance_id],
                 'type_demande_id' => $tabTypeDemandeIDs[$request->type_demande_id],
                 'statut' => $statuts[$request->statut],
-                'responsable'  => $tabUserIDs[$request->responsable],
+                //'responsable'  => $tabUserIDs[$request->responsable],
                 'date_fermeture' => $request->date_fermeture
-
             ]
         );
+
+        self::$id_projet = $request->projet_id ;
+        self::$id_demande = Demande::max('id') ;
+        
+        $users = User::all();
+       
+        foreach($users as $user)
+        {
+            $user->notify(new AddDemandeNotification());
+        }
 
         Flash::success('Demande saved successfully.');
 

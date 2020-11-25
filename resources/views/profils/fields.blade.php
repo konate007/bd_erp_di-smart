@@ -29,10 +29,12 @@
 </div>
 
 <!-- Role_id Field -->
+<!--
 <div class="form-group col-sm-6">
     {!! Form::label('role_id', 'Role id:') !!}
     {!! Form::select('role_id', $roleItems, null, ['class' => 'form-control','placeholder' => 'Please Select']) !!}
 </div>
+-->
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
