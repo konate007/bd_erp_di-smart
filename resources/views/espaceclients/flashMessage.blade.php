@@ -8,12 +8,12 @@
                     <div class="card">
                         <div class="card-header">{{ __('Dashboard') }}</div>
                         <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
+                            @if(session('success'))
+                            <div class="alert alert-success">
+                                {!! session('success') !!}
+                            </div>
                             @endif
-                            {{ __('Bienvenue dans l\'espace client') }}
+                            <h2>{{  $success }} </h2>
                         </div>
                     </div>
                 </div>

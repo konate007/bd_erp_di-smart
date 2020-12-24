@@ -1,13 +1,14 @@
+<div class="dropdown">
 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
     <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Paramètres
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="dropdown-menu nav nav-treeview">
                 <li class="nav-item {{ Request::is('planmaintenances*') ? 'active' : '' }}">
                   <a href="{{ route('planmaintenances.index') }}"><i class="fa fa-map-marker"></i><span>Plans de maintenance</span></a>
                 </li>
@@ -29,6 +30,7 @@
             </ul>
     </li>
 </ul>
+</div>
 <li class="{{ Request::is('dashboard*') ? 'active' : '' }}">
     <a href="{{ route('dashboard.index') }}"><i class="fa fa-table"></i><span>Tableau de bord</span></a>
 </li>

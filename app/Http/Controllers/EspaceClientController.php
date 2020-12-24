@@ -72,8 +72,6 @@ class EspaceclientController extends Controller
             $user->notify(new AddDemandeNotification());
         }
 
-        Flash::success('Demande saved successfully.');
-
         return redirect(route('espaceclients.index')); 
     }
 
@@ -97,33 +95,47 @@ class EspaceclientController extends Controller
 
     public function listeDemande (Request $request)
     {
-        
-        $client = Client::where('user_id', Auth::user()->id)->first();
-        $projet = Projet::where('client_id', $client->id)->first();
-        $demandes = Demande::where('projet_id', $projet->id)->paginate(1);
-        //$demandes = Demande::paginate(2) ;
+        if(Client::where('user_id', Auth::user()->id)->first()){
 
-        $departements = Departement::all();
-        $niveau_importances = Niveau_Importance::all();
-        $type_demandes = Type_Demande::all();
-        $clients = Client::all();
-        $projets = Projet::all() ;
+            $client = Client::where('user_id', Auth::user()->id)->first();
+            $projet = Projet::where('client_id', $client->id)->first();
+            $demandes = Demande::where('projet_id', $projet->id)->paginate(1);
+            //$demandes = Demande::paginate(2) ;
+            $departements = Departement::all();
+            $niveau_importances = Niveau_Importance::all();
+            $type_demandes = Type_Demande::all();
+            $clients = Client::all();
+            $projets = Projet::all() ;
 
-        return view('espaceclients.liste_demandes',compact(['departements', 
-        'niveau_importances', 'type_demandes', 'clients', 'projets']))
-            ->with('demandes', $demandes);
+            return view('espaceclients.liste_demandes',compact(['departements', 
+            'niveau_importances', 'type_demandes', 'clients', 'projets']))
+                ->with('demandes', $demandes);
+
+        }else{
+
+            return view('espaceclients.flashMessage')->with('success', ' Aucune donnée dans la liste des demandes ') ;
+        }
+
     }
 
     public function listeProjet (Request $request)
     {
-        $client = Client::where('user_id', Auth::user()->id)->first() ;
-        $projets = Projet::where('client_id', $client->id)->get() ;
-        //$projets = Projet::all() ;
-        return view('espaceclients.liste_projets', compact(['projets']));
+        if(Client::where('user_id', Auth::user()->id)->first()){
+
+            $client = Client::where('user_id', Auth::user()->id)->first() ;
+            $projets = Projet::where('client_id', $client->id)->get() ;
+            //$projets = Projet::all() ;
+            return view('espaceclients.liste_projets', compact(['projets']));
+
+        }else{
+
+            return view('espaceclients.flashMessage')->with('success', ' Aucune donnée dans la liste des projets ') ;
+        }
     }
 
     public function listeContrat (Request $request)
     {
+        if(Client::where('user_id', Auth::user()->id)->first()){
 
             $client = Client::where('user_id', Auth::user()->id)->first() ;
             $projet = Projet::where('client_id', $client->id)->first() ;
@@ -132,6 +144,12 @@ class EspaceclientController extends Controller
             $planmaintenances = Planmaintenance::all() ;
 
             return view('espaceclients.liste_contrats', compact(['contrats','projets','planmaintenances']));
+
+        }else{
+            
+
+            return view('espaceclients.flashMessage')->with('success', ' Aucune donnée dans la liste des contrats ') ;
+        }
         
     }
 

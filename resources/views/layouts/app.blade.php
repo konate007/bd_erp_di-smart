@@ -34,6 +34,10 @@
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css')}}">
+
+    <!-- Theme style -->
+    <!--<link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">-->
+
     
 
     @yield('css')
@@ -71,9 +75,7 @@
                             </a>
                             
                             <ul class="dropdown-menu">
-                                 <li>{{ count(Auth::user()->unreadNotifications)}} notification(s) pour {{Auth::user()->nom }} </li>
-                                 {{Auth::user()->unreadNotifications->markAsRead()}}
-                                 
+                                 <li>{{ count(Auth::user()->unreadNotifications)}} notification(s) pour {{Auth::user()->nom }} </li>                                 
                             </ul>
                         </li>
                         <li class="dropdown user user-menu">
@@ -196,6 +198,18 @@
     <script src="{{ asset('dist/js/pages/dashboard.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js')}}"></script>
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+
+    <!-- PAGE PLUGINS -->
+
+    <!-- ChartJS -->
+    <script src="{{asset('plugins/chart.js/Chart.min.js')}}"></script>
+
+    <!-- PAGE SCRIPTS -->
+    <script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
     @stack('scripts')
 </body>
 </html>
