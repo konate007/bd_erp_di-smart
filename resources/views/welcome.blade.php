@@ -19,7 +19,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}"><span style=color:aqua>Login</span></a>
+                        <a href="{{ route('login') }}"><span style=color:aqua>Se connecter</span></a>
 
                         <!--
                             @if (Route::has('register'))

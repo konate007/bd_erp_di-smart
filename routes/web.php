@@ -103,3 +103,7 @@ Route::resource('demandes', 'DemandeController');
 Route::resource('departements', 'DepartementController');
 
 Route::resource('contrats', 'ContratController');
+
+Route::resource('produits', 'ProduitController');
+
+Route::resource('stocks', 'StockController');

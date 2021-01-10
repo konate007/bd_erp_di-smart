@@ -58,7 +58,7 @@ class Niveau_ImportanceController extends AppBaseController
 
         $niveauImportance = $this->niveauImportanceRepository->create($input);
 
-        Flash::success('Niveau  Importance saved successfully.');
+        Flash::success('Niveau d importance ajouté avec succès.');
 
         return redirect(route('niveauImportances.index'));
     }
@@ -75,7 +75,7 @@ class Niveau_ImportanceController extends AppBaseController
         $niveauImportance = $this->niveauImportanceRepository->find($id);
 
         if (empty($niveauImportance)) {
-            Flash::error('Niveau  Importance not found');
+            Flash::error('Le niveau  d importance n existe pas');
 
             return redirect(route('niveauImportances.index'));
         }
@@ -95,7 +95,7 @@ class Niveau_ImportanceController extends AppBaseController
         $niveauImportance = $this->niveauImportanceRepository->find($id);
 
         if (empty($niveauImportance)) {
-            Flash::error('Niveau  Importance not found');
+            Flash::error('Le niveau  d importance n existe pas');
 
             return redirect(route('niveauImportances.index'));
         }
@@ -116,14 +116,14 @@ class Niveau_ImportanceController extends AppBaseController
         $niveauImportance = $this->niveauImportanceRepository->find($id);
 
         if (empty($niveauImportance)) {
-            Flash::error('Niveau  Importance not found');
+            Flash::error('Le niveau d importance n existe pas');
 
             return redirect(route('niveauImportances.index'));
         }
 
         $niveauImportance = $this->niveauImportanceRepository->update($request->all(), $id);
 
-        Flash::success('Niveau  Importance updated successfully.');
+        Flash::success('Niveau d importance mis à jour avec succès.');
 
         return redirect(route('niveauImportances.index'));
     }
@@ -142,14 +142,14 @@ class Niveau_ImportanceController extends AppBaseController
         $niveauImportance = $this->niveauImportanceRepository->find($id);
 
         if (empty($niveauImportance)) {
-            Flash::error('Niveau  Importance not found');
+            Flash::error('Le niveau d importance n existe pas');
 
             return redirect(route('niveauImportances.index'));
         }
 
         $this->niveauImportanceRepository->delete($id);
 
-        Flash::success('Niveau  Importance deleted successfully.');
+        Flash::success('Niveau d importance supprimé avec succès.');
 
         return redirect(route('niveauImportances.index'));
     }

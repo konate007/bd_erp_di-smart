@@ -24,7 +24,7 @@
                     <td>{{ $contrat->date_debut }}</td>
                     <td>{{ $contrat->date_fin }}</td>
                     <td>{{ $contrat->statut }}</td>
-                    <td><a class="btn btn-warning" href="{{ url('/download/'.$contrat->id) }}">Download PDF</a></td>
+                    <td><a class="btn btn-warning" href="{{ url('/download/'.$contrat->id) }}">Télécharger PDF</a></td>
                 </tr>
             @endforeach
             </tbody>

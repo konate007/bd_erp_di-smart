@@ -58,7 +58,7 @@ class RoleController extends AppBaseController
 
         $role = $this->roleRepository->create($input);
 
-        Flash::success('Role saved successfully.');
+        Flash::success('Role ajouté avec succès.');
 
         return redirect(route('roles.index'));
     }
@@ -75,7 +75,7 @@ class RoleController extends AppBaseController
         $role = $this->roleRepository->find($id);
 
         if (empty($role)) {
-            Flash::error('Role not found');
+            Flash::error('Le role n existe pas');
 
             return redirect(route('roles.index'));
         }
@@ -95,7 +95,7 @@ class RoleController extends AppBaseController
         $role = $this->roleRepository->find($id);
 
         if (empty($role)) {
-            Flash::error('Role not found');
+            Flash::error('Le role n existe pas');
 
             return redirect(route('roles.index'));
         }
@@ -116,14 +116,14 @@ class RoleController extends AppBaseController
         $role = $this->roleRepository->find($id);
 
         if (empty($role)) {
-            Flash::error('Role not found');
+            Flash::error('Le role n existe pas');
 
             return redirect(route('roles.index'));
         }
 
         $role = $this->roleRepository->update($request->all(), $id);
 
-        Flash::success('Role updated successfully.');
+        Flash::success('Role mis à jour avec succès.');
 
         return redirect(route('roles.index'));
     }
@@ -142,14 +142,14 @@ class RoleController extends AppBaseController
         $role = $this->roleRepository->find($id);
 
         if (empty($role)) {
-            Flash::error('Role not found');
+            Flash::error('Le role n existe pas');
 
             return redirect(route('roles.index'));
         }
 
         $this->roleRepository->delete($id);
 
-        Flash::success('Role deleted successfully.');
+        Flash::success('Role supprimé avec succès.');
 
         return redirect(route('roles.index'));
     }

@@ -34,7 +34,7 @@ class ClientController extends AppBaseController
         $clients = $this->clientRepository->all();
         $users = User::all() ;
 
-        return view('clients.index', compact(['users']))
+        return view('clients.index', compact(['users'])) 
             ->with('clients', $clients);
     }
 
@@ -63,7 +63,7 @@ class ClientController extends AppBaseController
         $client = $this->clientRepository->create($input);
         $users = User::all() ;
 
-        Flash::success('Client saved successfully.');
+        Flash::success('Client ajouté avec succès.');
 
         return redirect(route('clients.index',compact(['users'])));
     }
@@ -81,7 +81,7 @@ class ClientController extends AppBaseController
         $users = User::all() ;
 
         if (empty($client)) {
-            Flash::error('Client not found');
+            Flash::error('Le client n existe pas');
 
             return redirect(route('clients.index'));
         }
@@ -102,7 +102,7 @@ class ClientController extends AppBaseController
         $users = User::all() ;
 
         if (empty($client)) {
-            Flash::error('Client not found');
+            Flash::error('Le client n existe pas');
 
             return redirect(route('clients.index'));
         }
@@ -123,14 +123,14 @@ class ClientController extends AppBaseController
         $client = $this->clientRepository->find($id);
 
         if (empty($client)) {
-            Flash::error('Client not found');
+            Flash::error('Le client n existe pas');
 
             return redirect(route('clients.index'));
         }
 
         $client = $this->clientRepository->update($request->all(), $id);
 
-        Flash::success('Client updated successfully.');
+        Flash::success('Client mis à jour avec succès.');
 
         return redirect(route('clients.index'));
     }
@@ -149,14 +149,14 @@ class ClientController extends AppBaseController
         $client = $this->clientRepository->find($id);
 
         if (empty($client)) {
-            Flash::error('Client not found');
+            Flash::error('Le client n existe pas');
 
             return redirect(route('clients.index'));
         }
 
         $this->clientRepository->delete($id);
 
-        Flash::success('Client deleted successfully.');
+        Flash::success('Le client a été supprrimé avec succès.');
 
         return redirect(route('clients.index'));
     }

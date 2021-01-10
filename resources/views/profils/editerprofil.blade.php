@@ -4,32 +4,32 @@
 <center>
     <form method="POST" action="{{ action('ProfilController@updateProfil') }}">
         @csrf
-        <div class="form-group col-sm-6">
-                        {!! Form::label('prenom', 'Prenom:') !!}
+        <div class="form-group col-sm-6" style="margin-top:25px">
+                        {!! Form::label('prenom', 'Prenom') !!}
                         {!! Form::text('prenom', Auth::user()->prenom, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Nom Field -->
                     <div class="form-group col-sm-6">
-                        {!! Form::label('nom', 'Nom:') !!}
+                        {!! Form::label('nom', 'Nom') !!}
                         {!! Form::text('nom', Auth::user()->nom, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Email Field -->
                     <div class="form-group col-sm-6">
-                        {!! Form::label('email', 'Email:') !!}
+                        {!! Form::label('email', 'Email') !!}
                         {!! Form::email('email', Auth::user()->email, ['class' => 'form-control']) !!}
                     </div>
 
                     <!-- Password Field -->
-                    <div class="form-group col-sm-6">
+                    <!--<div class="form-group col-sm-6">
                         {!! Form::label('password', 'Password:') !!}
                         {!! Form::password('password', ['class' => 'form-control']) !!}
-                    </div>
+                    </div>-->
 
                     <!-- Fonction Field -->
                     <div class="form-group col-sm-6">
-                        {!! Form::label('fonction', 'Fonction:') !!}
+                        {!! Form::label('fonction', 'Fonction') !!}
                         {!! Form::text('fonction', Auth::user()->fonction, ['class' => 'form-control']) !!}
                     </div>
                     

@@ -98,7 +98,7 @@ class DemandeController extends AppBaseController
             $user->notify(new AddDemandeNotification());
         }
 
-        Flash::success('Demande saved successfully.');
+        Flash::success('Demande ajoutée avec succès.');
 
 
         return redirect(route('demandes.index',compact(['projets'])));
@@ -125,7 +125,7 @@ class DemandeController extends AppBaseController
         $users = User::all() ;
 
         if (empty($demande)) {
-            Flash::error('Demande not found');
+            Flash::error('La demande n existe pas');
 
             return redirect(route('demandes.index'));
         }
@@ -148,7 +148,7 @@ class DemandeController extends AppBaseController
         $projets = Projet::all() ;
 
         if (empty($demande)) {
-            Flash::error('Demande not found');
+            Flash::error('La demande n existe pas');
 
             return redirect(route('demandes.index'));
         }
@@ -171,7 +171,7 @@ class DemandeController extends AppBaseController
         $request->merge(['statut' => $status[$request->statut]]);
 
         if (empty($demande)) {
-            Flash::error('Demande not found');
+            Flash::error('La demande n existe pas');
 
             return redirect(route('demandes.index'));
         }
@@ -188,7 +188,7 @@ class DemandeController extends AppBaseController
         }
         
        
-        Flash::success('Demande updated successfully.');
+        Flash::success('Demande mise à jour avec succès.');
         
 
         return redirect(route('demandes.index'));
@@ -208,7 +208,7 @@ class DemandeController extends AppBaseController
         $demande = $this->demandeRepository->find($id);
 
         if (empty($demande)) {
-            Flash::error('Demande not found');
+            Flash::error('La demande n existe pas');
 
             return redirect(route('demandes.index'));
         }
@@ -217,7 +217,7 @@ class DemandeController extends AppBaseController
         $user = Auth::user();
         $user->notify(new DemandeNotification());
 
-        Flash::success('Demande deleted successfully.');
+        Flash::success('Demande supprimée avec succès.');
 
         return redirect(route('demandes.index'));
     }

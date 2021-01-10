@@ -58,7 +58,7 @@ class Type_DemandeController extends AppBaseController
 
         $typeDemande = $this->typeDemandeRepository->create($input);
 
-        Flash::success('Type  Demande saved successfully.');
+        Flash::success('Type Demande ajouté avec succès.');
 
         return redirect(route('typeDemandes.index'));
     }
@@ -75,7 +75,7 @@ class Type_DemandeController extends AppBaseController
         $typeDemande = $this->typeDemandeRepository->find($id);
 
         if (empty($typeDemande)) {
-            Flash::error('Type  Demande not found');
+            Flash::error('Type  Demande inexistant');
 
             return redirect(route('typeDemandes.index'));
         }
@@ -95,7 +95,7 @@ class Type_DemandeController extends AppBaseController
         $typeDemande = $this->typeDemandeRepository->find($id);
 
         if (empty($typeDemande)) {
-            Flash::error('Type  Demande not found');
+            Flash::error('Type Demande inexistant');
 
             return redirect(route('typeDemandes.index'));
         }
@@ -116,14 +116,14 @@ class Type_DemandeController extends AppBaseController
         $typeDemande = $this->typeDemandeRepository->find($id);
 
         if (empty($typeDemande)) {
-            Flash::error('Type  Demande not found');
+            Flash::error('Type Demande inexistant');
 
             return redirect(route('typeDemandes.index'));
         }
 
         $typeDemande = $this->typeDemandeRepository->update($request->all(), $id);
 
-        Flash::success('Type  Demande updated successfully.');
+        Flash::success('Type Demande mis à jour avec succès.');
 
         return redirect(route('typeDemandes.index'));
     }
@@ -142,14 +142,14 @@ class Type_DemandeController extends AppBaseController
         $typeDemande = $this->typeDemandeRepository->find($id);
 
         if (empty($typeDemande)) {
-            Flash::error('Type  Demande not found');
+            Flash::error('Type Demande inexistant');
 
             return redirect(route('typeDemandes.index'));
         }
 
         $this->typeDemandeRepository->delete($id);
 
-        Flash::success('Type  Demande deleted successfully.');
+        Flash::success('Type  Demande supprimé avec succès.');
 
         return redirect(route('typeDemandes.index'));
     }

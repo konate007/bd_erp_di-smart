@@ -22,7 +22,11 @@
             <td>{{ $client->telephone2 }}</td>
             <td>{{ $client->email }}</td>
             <td>{{ $client->site_web }}</td>
-            <td>{{ $users->find($client->user_id)->nom }}</td>
+            @foreach($users as $user)
+                    @if($user->id == $client->user_id)
+                    <td>{{ $user->nom }}</td>
+                    @endif
+            @endforeach
             <td>{{ $client->notes }}</td>
                 <td>
                     {!! Form::open(['route' => ['clients.destroy', $client->id], 'method' => 'delete']) !!}

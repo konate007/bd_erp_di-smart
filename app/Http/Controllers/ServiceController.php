@@ -58,7 +58,7 @@ class ServiceController extends AppBaseController
 
         $service = $this->serviceRepository->create($input);
 
-        Flash::success('Service saved successfully.');
+        Flash::success('Service ajouté avec succès.');
 
         return redirect(route('services.index'));
     }
@@ -75,7 +75,7 @@ class ServiceController extends AppBaseController
         $service = $this->serviceRepository->find($id);
 
         if (empty($service)) {
-            Flash::error('Service not found');
+            Flash::error('Le service n existe pas');
 
             return redirect(route('services.index'));
         }
@@ -95,7 +95,7 @@ class ServiceController extends AppBaseController
         $service = $this->serviceRepository->find($id);
 
         if (empty($service)) {
-            Flash::error('Service not found');
+            Flash::error('Le service n existe pas');
 
             return redirect(route('services.index'));
         }
@@ -116,14 +116,14 @@ class ServiceController extends AppBaseController
         $service = $this->serviceRepository->find($id);
 
         if (empty($service)) {
-            Flash::error('Service not found');
+            Flash::error('Le service n existe pas');
 
             return redirect(route('services.index'));
         }
 
         $service = $this->serviceRepository->update($request->all(), $id);
 
-        Flash::success('Service updated successfully.');
+        Flash::success('Service mis à jour avec succès.');
 
         return redirect(route('services.index'));
     }
@@ -142,14 +142,14 @@ class ServiceController extends AppBaseController
         $service = $this->serviceRepository->find($id);
 
         if (empty($service)) {
-            Flash::error('Service not found');
+            Flash::error('Le service n existe pas');
 
             return redirect(route('services.index'));
         }
 
         $this->serviceRepository->delete($id);
 
-        Flash::success('Service deleted successfully.');
+        Flash::success('Service supprimé avec succès.');
 
         return redirect(route('services.index'));
     }

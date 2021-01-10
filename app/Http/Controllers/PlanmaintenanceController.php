@@ -61,7 +61,7 @@ class PlanmaintenanceController extends AppBaseController
 
         $planmaintenance = $this->planmaintenanceRepository->create($input);
 
-        Flash::success('Planmaintenance saved successfully.');
+        Flash::success('Plan de maintenance ajouté avec succès.');
 
         return redirect(route('planmaintenances.index'));
     }
@@ -78,7 +78,7 @@ class PlanmaintenanceController extends AppBaseController
         $planmaintenance = $this->planmaintenanceRepository->find($id);
 
         if (empty($planmaintenance)) {
-            Flash::error('Planmaintenance not found');
+            Flash::error('Le plan de maintenance n existe pas');
 
             return redirect(route('planmaintenances.index'));
         }
@@ -99,7 +99,7 @@ class PlanmaintenanceController extends AppBaseController
         $planmaintenance = $this->planmaintenanceRepository->find($id);
 
         if (empty($planmaintenance)) {
-            Flash::error('Planmaintenance not found');
+            Flash::error('Le plan de maintenance n existe pas');
 
             return redirect(route('planmaintenances.index'));
         }
@@ -120,14 +120,14 @@ class PlanmaintenanceController extends AppBaseController
         $planmaintenance = $this->planmaintenanceRepository->find($id);
 
         if (empty($planmaintenance)) {
-            Flash::error('Planmaintenance not found');
+            Flash::error('Le plan de maintenance n existe pas');
 
             return redirect(route('planmaintenances.index'));
         }
 
         $planmaintenance = $this->planmaintenanceRepository->update($request->all(), $id);
 
-        Flash::success('Planmaintenance updated successfully.');
+        Flash::success('Plan de maintenance mis à jour avec succès.');
 
         return redirect(route('planmaintenances.index'));
     }
@@ -146,14 +146,14 @@ class PlanmaintenanceController extends AppBaseController
         $planmaintenance = $this->planmaintenanceRepository->find($id);
 
         if (empty($planmaintenance)) {
-            Flash::error('Planmaintenance not found');
+            Flash::error('Le plan de maintenance n existe pas');
 
             return redirect(route('planmaintenances.index'));
         }
 
         $this->planmaintenanceRepository->delete($id);
 
-        Flash::success('Planmaintenance deleted successfully.');
+        Flash::success('Plan de maintenance supprimé avec succès.');
 
         return redirect(route('planmaintenances.index'));
     }

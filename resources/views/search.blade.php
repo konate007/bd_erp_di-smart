@@ -7,26 +7,40 @@
         <thead>
             <tr>
                 <th>Objet</th>
-                <th>Departement id</th>
-                <th>Projet User id</th>
+                <th>Departement </th>
+                <th>Projet</th>
                 <th>Message</th>
-                <th>Niveau Importance id</th>
-                <th>Type Demande id</th>
+                <th>Niveau Importance </th>
+                <th>Type Demande </th>
                 <th>Statut</th>
-                <th>Responsale</th>
             </tr>
         </thead>
         <tbody>
             @foreach($details as $demande)
             <tr>
                 <td>{{$demande->objet}}</td>
-                <td>{{$departements->find($demande->departement_id)->nom_departement}}</td>
-                <td>{{$projets->find($demande->projet_user_id)->nom_projet}}</td>
+                @foreach($departements as $departement)
+                    @if($demande->departement_id == $departement->id)
+                         <td>{{ $departement->nom_departement }}</td>
+                    @endif
+                @endforeach
+                @foreach($projets as $projet)
+                    @if($demande->projet_id == $projet->id)
+                         <td>{{ $projet->nom_projet }}</td>
+                    @endif
+                @endforeach
                 <td>{{$demande->message}}</td>
-                <td>{{$niveau_importances->find($demande->niveau_importance_id)->niveau}}</td>
-                <td>{{$type_demandes->find($demande->type_demande_id)->type}}</td>
+                @foreach($niveau_importances as $niveau_importance)
+                    @if($demande->niveau_importance_id == $niveau_importance->id)
+                         <td>{{ $niveau_importance->niveau }}</td>
+                    @endif
+                @endforeach
+                @foreach($type_demandes as $type_demande)
+                    @if($demande->type_demande_id == $type_demande->id)
+                         <td>{{ $type_demande->type }}</td>
+                    @endif
+                @endforeach
                 <td>{{$demande->statut}}</td>
-                <td>{{$users->find($demande->responsable)->nom}}</td>
             </tr>
             @endforeach
         </tbody>

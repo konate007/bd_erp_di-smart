@@ -69,7 +69,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->create($input);
         
 
-        Flash::success('User saved successfully.');
+        Flash::success('User ajouté avec succès.');
         $users = User::all();
         foreach($users as $user)
         {
@@ -91,7 +91,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('L utilisateur n existe pas');
 
             return redirect(route('users.index'));
         }
@@ -111,7 +111,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
        
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('L utilisateur n existe pas');
 
             return redirect(route('users.index'));
         }
@@ -132,14 +132,14 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('L utilisateur n existe pas');
 
             return redirect(route('users.index'));
         }
 
         $user = $this->userRepository->update($request->all(), $id);
 
-        Flash::success('User updated successfully.');
+        Flash::success('User mis à jour avec succès.');
         $users = User::all();
         foreach($users as $user)
         {
@@ -164,14 +164,14 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('L utilisateur n existe pas');
 
             return redirect(route('users.index'));
         }
 
         $this->userRepository->delete($id);
 
-        Flash::success('User deleted successfully.');
+        Flash::success('User supprimé avec succès.');
 
         return redirect(route('users.index'));
     }

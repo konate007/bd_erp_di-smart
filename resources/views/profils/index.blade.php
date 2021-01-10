@@ -1,7 +1,7 @@
 @extends('espaceclients.navbar')
 
 @section('contenu')
-    <div class="container">
+    <div class="container" style="margin-top:25px">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Vos données personnelles</h5>
@@ -27,10 +27,20 @@
                     @endforeach
                     </tbody>
                 </table>
-                <a type="button" class="btn btn-info btn-lg btn-block" href="{{ route('editerprofil') }}">
-                    Modifier le profil
-                </a>
-            </div>
+                <div class="row">
+                <div class="col-sm-5">
+                
+                </div>
+                <div class="col-sm-4">
+                    <!-- Submit Field -->
+                    <div class="form-group col-sm-12">
+                        <a href="{{ route('editerprofil') }}" class="btn btn-info btn-lg">Modifier</a>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                
+                </div>
+            
         </div>
     </div>
 @endsection

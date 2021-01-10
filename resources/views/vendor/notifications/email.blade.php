@@ -6,7 +6,7 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# @lang('Support Technique Di-smart')
+# @lang('Gestion Des Demandes Clients') 
 @endif
 @endif
 

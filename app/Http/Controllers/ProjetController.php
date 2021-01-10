@@ -65,7 +65,7 @@ class ProjetController extends AppBaseController
 
         $projet = $this->projetRepository->create($input);
 
-        Flash::success('Projet saved successfully.');
+        Flash::success('Projet ajouté avec succès.');
 
         return redirect(route('projets.index',compact(['users'])));
     }
@@ -82,7 +82,7 @@ class ProjetController extends AppBaseController
         $projet = $this->projetRepository->find($id);
 
         if (empty($projet)) {
-            Flash::error('Projet not found');
+            Flash::error('Le projet n existe pas');
 
             return redirect(route('projets.index'));
         }
@@ -104,7 +104,7 @@ class ProjetController extends AppBaseController
         $users = User::all() ;
 
         if (empty($projet)) {
-            Flash::error('Projet not found');
+            Flash::error('Le projet n existe pas');
 
             return redirect(route('projets.index'));
         }
@@ -125,14 +125,14 @@ class ProjetController extends AppBaseController
         $projet = $this->projetRepository->find($id);
 
         if (empty($projet)) {
-            Flash::error('Projet not found');
+            Flash::error('Le projet n existe pas');
 
             return redirect(route('projets.index'));
         }
 
         $projet = $this->projetRepository->update($request->all(), $id);
 
-        Flash::success('Projet updated successfully.');
+        Flash::success('Projet mis à jour avec succès.');
 
         return redirect(route('projets.index'));
     }
@@ -151,14 +151,14 @@ class ProjetController extends AppBaseController
         $projet = $this->projetRepository->find($id);
 
         if (empty($projet)) {
-            Flash::error('Projet not found');
+            Flash::error('Le projet n existe pas');
 
             return redirect(route('projets.index'));
         }
 
         $this->projetRepository->delete($id);
 
-        Flash::success('Projet deleted successfully.');
+        Flash::success('Projet supprimé avec succès.');
 
         return redirect(route('projets.index'));
     }

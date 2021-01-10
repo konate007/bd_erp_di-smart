@@ -21,13 +21,13 @@
             </tr>
       </thead>
       <tbody>
-                <tr>
-                    <td>{{ $projets->find($contrat->projet_id )->nom_projet }}</td>
-                    <td>{{ $planmaintenances->find($contrat->planmaintenance_id )->titre }}</td>
-                    <td>{{ $contrat->description }}</td>
-                    <td>{{ $contrat->date_debut }}</td>
-                    <td>{{ $contrat->date_fin }}</td>
-                </tr>
+              <tr>
+                  <td>{{ $projets->find($contrat->projet_id )->nom_projet }}</td>
+                  <td>{{ $planmaintenances->find($contrat->planmaintenance_id )->titre }}</td>
+                  <td>{{ $contrat->description }}</td>
+                  <td>{{ $contrat->date_debut }}</td>
+                  <td>{{ $contrat->date_fin }}</td>
+              </tr>
       </tbody>
     </table>
     <p>Téléchargement du contrat réussit avec succès</p>

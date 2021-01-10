@@ -43,7 +43,7 @@
 </li>
 
 <li class="{{ Request::is('projets*') ? 'active' : '' }}">
-    <a href="{{ route('projets.index') }}"><i class="fas fa-project-diagram"></i><span>Projets</span></a>
+    <a href="{{ route('projets.index') }}"><i class="fas fa-project-diagram"></i><span> Projets </span></a>
 </li>
 <!--
 <li class="{{ Request::is('projetUsers*') ? 'active' : '' }}">
@@ -52,10 +52,9 @@
 -->
 
 <li class="{{ Request::is('contrats*') ? 'active' : '' }}">
-    <a href="{{ route('contrats.index') }}"><i class="fas fa-file-contract"></i><span>Contrats</span></a>
+    <a href="{{ route('contrats.index') }}"><i class="fas fa-file-contract"></i><span> Contrats </span></a>
 </li>
 
 <li class="{{ Request::is('demandes*') ? 'active' : '' }}">
-    <a href="{{ route('demandes.index') }}"><i class="fa fa-reply"></i><span>Demandes</span></a>
+    <a href="{{ route('demandes.index') }}"><i class="fa fa-reply"></i><span> Demandes </span></a>
 </li>
-

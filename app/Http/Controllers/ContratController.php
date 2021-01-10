@@ -68,7 +68,7 @@ class ContratController extends AppBaseController
 
         $contrat = $this->contratRepository->create($input);
 
-        Flash::success('Contrat saved successfully.');
+        Flash::success('Contrat ajouté avec succès.');
 
         return redirect(route('contrats.index',compact(['projets'])));
     }
@@ -87,7 +87,7 @@ class ContratController extends AppBaseController
         $projets = Projet::all() ;
 
         if (empty($contrat)) {
-            Flash::error('Contrat not found');
+            Flash::error('Le contrat n existe pas');
 
             return redirect(route('contrats.index'));
         }
@@ -109,7 +109,7 @@ class ContratController extends AppBaseController
         $projets = Projet::all() ;
 
         if (empty($contrat)) {
-            Flash::error('Contrat not found');
+            Flash::error('Le contrat n existe pas');
 
             return redirect(route('contrats.index'));
         }
@@ -131,7 +131,7 @@ class ContratController extends AppBaseController
         $status = array('Ouvert','En cours','Fermé','En suspens');
 
         if (empty($contrat)) {
-            Flash::error('Contrat not found');
+            Flash::error('Le contrat n existe pas');
 
             return redirect(route('contrats.index'));
         }
@@ -139,7 +139,7 @@ class ContratController extends AppBaseController
 
         $contrat = $this->contratRepository->update($request->all(), $id);
 
-        Flash::success('Contrat updated successfully.');
+        Flash::success('Contrat mis à jour avec succès.');
         return redirect(route('contrats.index'));
     }
 
@@ -157,14 +157,14 @@ class ContratController extends AppBaseController
         $contrat = $this->contratRepository->find($id);
 
         if (empty($contrat)) {
-            Flash::error('Contrat not found');
+            Flash::error('Le contrat n existe pas');
 
             return redirect(route('contrats.index'));
         }
 
         $this->contratRepository->delete($id);
 
-        Flash::success('Contrat deleted successfully.');
+        Flash::success('Le contrat a été supprimé avec succès.');
 
         return redirect(route('contrats.index'));
     }
